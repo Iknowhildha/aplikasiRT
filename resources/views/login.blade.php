@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login App RT</title>
+  <title>Aplikasi RT | Login Warga</title>
+  @toastr_css
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -14,9 +15,6 @@
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/iCheck/square/blue.css') }}">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -29,16 +27,6 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    @if(\Session::has('alert'))
-    <div class="alert alert-danger">
-        <div>{{Session::get('alert')}}</div>
-    </div>
-@endif
-@if(\Session::has('alert-success'))
-    <div class="alert alert-success">
-        <div>{{Session::get('alert-success')}}</div>
-    </div>
-@endif
   <div class="login-logo">
     <a href="{{ asset('adminlte/') }}index2.html"><b>APLIKASI </b>RT</a>
   </div>
@@ -72,9 +60,9 @@
       </div>
     </form>
     <!-- /.social-auth-links -->
-
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+<br>
+    <a href="#"><i class="fa fa-key"></i> I forgot my password</a>
+    <a href="{{ url('register') }}" class="pull-right"><i class="fa fa-user"></i> Register Warga</a>
 
   </div>
   <!-- /.login-box-body -->
@@ -85,16 +73,9 @@
 <script src="{{ asset('adminlte/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<!-- iCheck -->
-<script src="{{ asset('adminlte/plugins/iCheck/icheck.min.js') }}"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+
 </body>
+@jquery
+@toastr_js
+@toastr_render
 </html>

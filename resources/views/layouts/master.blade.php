@@ -22,6 +22,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/_all-skins.min.css') }}">
+  @toastr_css
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,11 +40,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="{{ url('/beranda') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>A</b>RT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Aplikasi</b>RT</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -62,7 +63,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">{{Session::get('username')}}</span>
+              <span class="hidden-xs">{{Session::get('username')}} <i class="fa fa-user"></i></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -142,7 +143,7 @@
     <div class="pull-right hidden-xs">
       <b>Website</b> Administrasi dan Informasi
     </div>
-    <strong>Copyright &copy; 2020 <a href="">RT 42 Kelurahan Bandar Lor</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a href="{{ ('/') }}">RT 42 Kelurahan Bandar Lor</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -184,4 +185,7 @@
   })
 </script>
 </body>
+@jquery
+@toastr_js
+@toastr_render
 </html>

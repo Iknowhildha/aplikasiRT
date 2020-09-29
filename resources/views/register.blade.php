@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Registration Page</title>
+  <title>Aplikasi RT | Registrasi Warga</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -30,52 +30,102 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="{{ asset('') }}index2.html"><b>APLIKASI </b>RT</a>
+    <a href="{{ asset('register') }}"><b>APLIKASI </b>RT</a>
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">Register</p>
+    <p class="login-box-msg">Register Warga</p>
 
     <form action="{{ url('/registerPost') }}" method="post">
       @csrf
-      <div class="form-group has-feedback">
+      <div class="form-group @error('username') has-feedback @enderror">
+        <label for="">Username</label>
         <input type="text" id="username" class="form-control" placeholder="Username" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        @error('username')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('email') has-feedback @enderror">
+        <label for="">Email</label>
         <input id="email" type="email" class="form-control" placeholder="Email" name="email" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('password') has-feedback @enderror">
+        <label for="">Password</label>
         <input id="password" type="password" class="form-control" placeholder="Password" name="password" >
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-wrench form-control-feedback"></span>
+        @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
       <div class="form-group has-feedback">
-        <input id="password" type="password" class="form-control" placeholder="Password Konfirmasi" name="password" >
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <label for="">Password Konfirmasi</label>
+        <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Password Konfirmasi">
+        <span class="glyphicon glyphicon-wrench form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('no_kk') has-feedback @enderror">
+        <label for="">Nomor Kartu Keluarga</label>
         <input id="no_kk" type="no_kk" class="form-control" placeholder="Nomor Kartu Keluarga" name="no_kk" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-book form-control-feedback"></span>
+        @error('no_kk')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('nik') has-feedback @enderror">
+        <label for="">NIK (Nomor Induk Kependudukan)</label>
         <input id="nik" type="nik" class="form-control" placeholder="Nomor Induk Kependudukan" name="nik" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-book form-control-feedback"></span>
+        @error('nik')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('nama') has-feedback @enderror">
+        <label for="">Nama Lengkap</label>
         <input id="nama" type="nama" class="form-control" placeholder="Nama Lengkap" name="nama" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+        @error('nama')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('tempat_lahir') has-feedback @enderror">
+        <label for="">Tempat Lahir</label>
         <input id="tempat_lahir" type="tempat_lahir" class="form-control" placeholder="Tempat Lahir" name="tempat_lahir" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-object-align-bottom form-control-feedback"></span>
+        @error('tempat_lahir')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group @error('tanggal_lahir') has-feedback @enderror">
+        <label for="">Tanggal Lahir</label>
         <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" >
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+        @error('tanggal_lahir')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
-        <select id="agama" class="form-control" name="agama" >
+      <div class="form-group @error('agama') has-feedback @enderror">
+        <label for="">Agama</label>
+        <select id="agama" class="form-control" name="agama">
           <option value="">-- Pilih Agama --</option>
           <option value="islam">Islam</option>
           <option value="protestan">Protestan</option>
@@ -85,47 +135,58 @@
           <option value="konghucu">Konghucu</option>
         </select>
         <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        @error('agama')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red;">{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-group has-feedback">
-      <label for=""> Jenis Kelamin</label>
+      <div class="form-group @error('jenis_kelamin') has-feedback @enderror">
+      <label for="">Jenis Kelamin</label>
       <div class="radio">
         <label>
           <input type="radio" name="jenis_kelamin" id="jenis_kelamin1" value="L">
           Laki Laki
         </label>
-      </div>
-      <div class="radio">
         <label>
           <input type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="P">
           Perempuan
         </label>
       </div>
+      @error('jenis_kelamin')
+      <span class="invalid-feedback" role="alert">
+          <strong style="color: red;">{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
-    <div class="form-group has-feedback">
+    <div class="form-group @error('no_hp') has-feedback @enderror">
+      <label for="">Nomor HP</label>
       <input id="no_hp" type="number" class="form-control" name="no_hp" placeholder="Nomor HP">
-      <span class="glyphicon glyphicon-email form-control-feedback"></span>
+      <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+      @error('no_hp')
+      <span class="invalid-feedback" role="alert">
+          <strong style="color: red;">{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
-    <div class="form-group has-feedback">
+    <div class="form-group @error('alamat') has-feedback @enderror">
+      <label for="">Alamat Lengkap</label>
       <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control" placeholder="Alamat Lengkap"></textarea>
-      <span class="glyphicon glyphicon-email form-control-feedback"></span>
+      <span class="glyphicon glyphicon-home form-control-feedback"></span>
+      @error('alamat')
+      <span class="invalid-feedback" role="alert">
+          <strong style="color: red;">{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="col-md-12 col-sm-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
-        <!-- /.col -->
       </div>
     </form>
-
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <br>
+    <a href="{{ url('login') }}" class="text-left"><i class="fa fa-sign-in"></i> Sudah punya akun, Login Warga</a>
   </div>
   <!-- /.form-box -->
 </div>

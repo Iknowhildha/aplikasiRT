@@ -36,7 +36,8 @@ class UserController extends Controller
             if($cariuser){ //apakah user tersebut ada atau tidak
                 $cariwarga = Warga::where('user_id',$cariuser->id)->first();
                 if($cariwarga->status === "Waiting"){ //jika status user tidak = waiting
-                    return redirect('login')->with('alert','Menunggu Konfirmasi Coba Beberapa Saat Lagi!');
+                    toastr()->warning('Menunggu Konfirmasi, Coba Beberapa Saat Lagi!');
+                    return redirect('login');
                 }else{
                     if(Hash::check($password,$cariuser->password)){//apakah pencocokan password sama atau tidak
                         Session::put('username',$cariuser->username);
@@ -52,18 +53,21 @@ class UserController extends Controller
                         
                         return redirect('beranda');
                     }else{
-                        return redirect('login')->with('alert','Password atau Username, Salah !');
+                        toastr()->warning('Password atau Username, Salah !');
+                        return redirect('login');
                     }
                 }
             }else{
-                return redirect('login')->with('alert','Data User Tidak Terdaftar');
+                toastr()->warning('Data User Tidak Terdaftar');
+                return redirect('login');
             }
      
     }
 
     public function logout(){
         Session::flush();
-        return redirect('login')->with('alert','Kamu sudah logout');
+        toastr()->success('Kamu Berhasil Logout');
+        return redirect('login');
     }
 
     public function register(Request $request){
@@ -71,18 +75,20 @@ class UserController extends Controller
     }
 
     public function registerPost(Request $request){
-        // $this->validate($request, [
-        //     'username' => ['required', 'string', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-        //     'no_kk' => ['required', 'numeric'],
-        //     'nik' => ['required', 'numeric'],
-        //     'nama' => ['required', 'string', 'max:255'],
-        //     'tempat_lahir' => ['required', 'string', 'max:255'],
-        //     'tanggal_lahir' => ['required', 'date'],
-        //     'agama' => ['required', 'string', 'max:255'],
-        //     'jenis_kelamin' => ['required', 'string', 'max:255'],
-        //     'alamat' => ['required', 'string', 'max:255']
-        // ]);
+        $this->validate($request, [
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required'],
+            'no_hp' => ['required'],
+            'no_kk' => ['required', 'numeric'],
+            'nik' => ['required', 'numeric'],
+            'nama' => ['required', 'string', 'max:255'],
+            'tempat_lahir' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => ['required', 'date'],
+            'agama' => ['required', 'string', 'max:255'],
+            'jenis_kelamin' => ['required', 'string', 'max:255'],
+            'alamat' => ['required', 'string', 'max:255']
+        ]);
 
        $user =  User::create([
             'username' => $request['username'],
@@ -107,6 +113,8 @@ class UserController extends Controller
             'status' => "Waiting",
             'user_id' => $user->id
         ]);
+
+        toastr()->success('Registrasi berhasil, Silahkan menunggu konfirmasi data, Baru anda bisa login');
 
         return redirect('login');
     }
