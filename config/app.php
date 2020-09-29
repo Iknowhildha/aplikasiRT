@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Yoeunes\Toastr\ToastrServiceProvider::class,
         /*
          * Application Service Providers...
          */
