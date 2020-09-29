@@ -28,7 +28,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('adminlte/') }}index2.html"><b>APLIKASI </b>RT</a>
+    <a href="{{ url('login') }}index2.html"><b>APLIKASI </b>RT</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
