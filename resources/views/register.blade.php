@@ -43,7 +43,7 @@
                 @csrf
                 <div class="form-group @error('username') has-feedback @enderror">
                     <label for="">Username</label>
-                    <input type="text" id="username" class="form-control" placeholder="Username" name="username">
+                    <input type="text" id="username" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @error('username')
                     <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group @error('email') has-feedback @enderror">
                     <label for="">Email</label>
-                    <input id="email" type="email" class="form-control" placeholder="Email" name="email">
+                    <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group @error('password') has-feedback @enderror">
                     <label for="">Password</label>
-                    <input id="password" type="password" class="form-control" placeholder="Password" name="password">
+                    <input id="password" type="password" class="form-control" placeholder="Password" name="password" value="{{ old('password') }}">
                     <span class="glyphicon glyphicon-wrench form-control-feedback"></span>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -74,12 +74,12 @@
                 <div class="form-group has-feedback">
                     <label for="">Password Konfirmasi</label>
                     <input id="password-confirm" type="password" name="password_confirmation" class="form-control"
-                        placeholder="Password Konfirmasi">
+                        placeholder="Password Konfirmasi" value="{{ old('password_confirmation') }}">
                     <span class="glyphicon glyphicon-wrench form-control-feedback"></span>
                 </div>
                 <div class="form-group @error('no_kk') has-feedback @enderror">
                     <label for="">Nomor Kartu Keluarga</label>
-                    <input id="no_kk" type="no_kk" class="form-control" placeholder="Nomor Kartu Keluarga" name="no_kk">
+                    <input id="no_kk" type="no_kk" class="form-control" placeholder="Nomor Kartu Keluarga" name="no_kk" value="{{ old('no_kk') }}">
                     <span class="glyphicon glyphicon-book form-control-feedback"></span>
                     @error('no_kk')
                     <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group @error('nik') has-feedback @enderror">
                     <label for="">NIK (Nomor Induk Kependudukan)</label>
-                    <input id="nik" type="nik" class="form-control" placeholder="Nomor Induk Kependudukan" name="nik">
+                    <input id="nik" type="nik" class="form-control" placeholder="Nomor Induk Kependudukan" name="nik" value="{{ old('nik') }}">
                     <span class="glyphicon glyphicon-book form-control-feedback"></span>
                     @error('nik')
                     <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="form-group @error('nama') has-feedback @enderror">
                     <label for="">Nama Lengkap</label>
-                    <input id="nama" type="nama" class="form-control" placeholder="Nama Lengkap" name="nama">
+                    <input id="nama" type="nama" class="form-control" placeholder="Nama Lengkap" name="nama" value="{{ old('nama') }}">
                     <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
                     @error('nama')
                     <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                 <div class="form-group @error('tempat_lahir') has-feedback @enderror">
                     <label for="">Tempat Lahir</label>
                     <input id="tempat_lahir" type="tempat_lahir" class="form-control" placeholder="Tempat Lahir"
-                        name="tempat_lahir">
+                        name="tempat_lahir" value="{{ old('tempat_lahir') }}">
                     <span class="glyphicon glyphicon-object-align-bottom form-control-feedback"></span>
                     @error('tempat_lahir')
                     <span class="invalid-feedback" role="alert">
@@ -120,7 +120,7 @@
                 </div>
                 <div class="form-group @error('tanggal_lahir') has-feedback @enderror">
                     <label for="">Tanggal Lahir</label>
-                    <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir">
+                    <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                     <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                     @error('tanggal_lahir')
                     <span class="invalid-feedback" role="alert">
@@ -132,12 +132,12 @@
                     <label for="">Agama</label>
                     <select id="agama" class="form-control" name="agama">
                         <option value="">-- Pilih Agama --</option>
-                        <option value="islam">Islam</option>
-                        <option value="protestan">Protestan</option>
-                        <option value="katolik">Katolik</option>
-                        <option value="buddha">Buddha</option>
-                        <option value="hindu">Hindu</option>
-                        <option value="konghucu">Konghucu</option>
+                        <option value="Islam" {{ old('agama') == 'Islam' ? "selected" : "" }}>Islam</option>
+                        <option value="Protestan" {{ old('agama') == 'Protestan' ? "selected" : "" }}>Protestan</option>
+                        <option value="Katolik" {{ old('agama') == 'Katolik' ? "selected" : "" }}>Katolik</option>
+                        <option value="Buddha" {{ old('agama') == 'Buddha' ? "selected" : "" }}>Buddha</option>
+                        <option value="Hindu" {{ old('agama') == 'Hindu' ? "selected" : "" }}>Hindu</option>
+                        <option value="Konghucu" {{ old('agama') == 'Konghucu' ? "selected" : "" }}>Konghucu</option>
                     </select>
                     <span class="glyphicon glyphicon-email form-control-feedback"></span>
                     @error('agama')
@@ -150,11 +150,13 @@
                     <label for="">Jenis Kelamin</label>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin1" value="L">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin1" value="Laki-laki" @if(old('jenis_kelamin')) checked @endif
+                            >
                             Laki Laki
                         </label>
                         <label>
-                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="P">
+                            <input type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="Perempuan" @if(old('jenis_kelamin')) checked @endif
+                            >
                             Perempuan
                         </label>
                     </div>
@@ -166,7 +168,7 @@
                 </div>
                 <div class="form-group @error('no_hp') has-feedback @enderror">
                     <label for="">Nomor HP</label>
-                    <input id="no_hp" type="number" class="form-control" name="no_hp" placeholder="Nomor HP">
+                    <input id="no_hp" type="number" class="form-control" name="no_hp" placeholder="Nomor HP" value="{{ old('no_hp') }}">
                     <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
                     @error('no_hp')
                     <span class="invalid-feedback" role="alert">
@@ -177,7 +179,7 @@
                 <div class="form-group @error('alamat') has-feedback @enderror">
                     <label for="">Alamat Lengkap</label>
                     <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control"
-                        placeholder="Alamat Lengkap"></textarea>
+                        placeholder="Alamat Lengkap">{{old('alamat')}}</textarea>
                     <span class="glyphicon glyphicon-home form-control-feedback"></span>
                     @error('alamat')
                     <span class="invalid-feedback" role="alert">

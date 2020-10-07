@@ -24,3 +24,27 @@ Route::post('/loginPost', 'UserController@loginPost');
 Route::get('/register', 'UserController@register');
 Route::post('/registerPost', 'UserController@registerPost');
 Route::get('/logout', 'UserController@logout');
+
+// Route Data Warga
+Route::get('/warga', 'UserController@show');
+Route::get('/editProfil/{id}', 'UserController@editProfil');
+Route::get('/detailProfile/{id}', 'UserController@detailProfil');
+Route::patch('/updateProfil/{id}', 'UserController@updateProfil');
+Route::get('/deleteWarga/{id}', 'UserController@deleteWarga');
+
+
+Route::get('/detailwarga', function () {
+    return view('admin.warga.detail');
+});
+
+Route::get('/agenda', function () {
+    return view('warga.agenda');
+});
+
+Route::get('/keuangan', function () {
+    return view('warga.keuangan');
+});
+
+Route::get('/warga1', function () {
+    return view('admin.warga.warga');
+});

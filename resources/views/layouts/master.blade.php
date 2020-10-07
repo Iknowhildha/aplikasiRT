@@ -78,7 +78,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ url('/detailProfile', Session::get('id')) }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Sign out</a>
@@ -104,7 +104,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN MENU</li>
         <li ><a href="{{ url('beranda') }}"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-        <li ><a href="{{ url('') }}"><i class="fa fa-id-card-o"></i> <span>Data Warga</span></a></li>
+        <li ><a href="{{ url('warga') }}"><i class="fa fa-id-card-o"></i> <span>Data Warga</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-envelope-open"></i> <span>Surat Pengantar</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-calendar-minus-o"></i> <span>Agenda</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>

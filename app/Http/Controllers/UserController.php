@@ -40,6 +40,7 @@ class UserController extends Controller
                     return redirect('login');
                 }else{
                     if(Hash::check($password,$cariuser->password)){//apakah pencocokan password sama atau tidak
+                        Session::put('id',$cariuser->id);
                         Session::put('username',$cariuser->username);
                         Session::put('email',$cariuser->email);
                         Session::put('nama',$cariwarga->nama);
@@ -117,5 +118,52 @@ class UserController extends Controller
         toastr()->success('Registrasi berhasil, Silahkan menunggu konfirmasi data, Baru anda bisa login');
 
         return redirect('login');
+    }
+
+    public function show() {
+    //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
+    $warga = Warga::paginate(3);
+    //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
+    return view('admin.warga.warga', compact('warga'));
+    }
+
+    public function detailProfil($id) {
+   //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
+   $warga = Warga::find($id);
+   //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
+   return view('warga.warga.detail', compact('warga'));
+        }
+
+    public function editProfil($id) {
+    //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
+    $warga = Warga::find($id);
+    //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
+    return view('warga.warga.edit', compact('warga'));
+
+    }
+
+    public function updateProfil(Request $request, $id) {
+  
+        $warga = Warga::find($id);
+        $warga->no_kk = $request->no_kk;
+        $warga->nik = $request->nik;
+        $warga->nama = $request->nama;
+        $warga->tempat_lahir = $request->tempat_lahir;
+        $warga->tanggal_lahir = $request->tanggal_lahir;
+        $warga->agama = $request->agama;
+        $warga->jenis_kelamin = $request->jenis_kelamin;
+        $warga->no_hp = $request->no_hp;
+        $warga->alamat = $request->alamat;
+        $warga->update();
+
+        return view('warga.warga.detail', compact('warga'));
+        
+    }
+
+    public function deleteWarga($id) {
+        $warga = User::find($id);
+        $warga->delete();
+
+        return view('admin.warga.warga', compact('warga'));
     }
 }
