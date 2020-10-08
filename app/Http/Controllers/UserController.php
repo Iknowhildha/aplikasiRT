@@ -50,6 +50,7 @@ class UserController extends Controller
                         Session::put('jenis_kelamin',$cariwarga->jenis_kelamin);
                         Session::put('no_hp',$cariwarga->no_hp);
                         Session::put('alamat',$cariwarga->alamat);
+                        Session::put('level',$cariuser->level);
                         Session::put('login',TRUE);
                         
                         return redirect('beranda');
@@ -121,30 +122,32 @@ class UserController extends Controller
     }
 
     public function show() {
-    //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
+
     $warga = Warga::paginate(3);
-    //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
-    return view('admin.warga.warga', compact('warga'));
+    return view('adminwarga.warga.warga', compact('warga'));
     }
 
     public function detailProfil($id) {
-   //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
-   $warga = Warga::find($id);
-   //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
-   return view('warga.warga.detail', compact('warga'));
-        }
+        $warga = Warga::where('user_id', $id)->firstOrFail();
+        return view('adminwarga.warga.detailprofil', compact('warga'));
+    }
+
+    public function detail($id) {
+        
+        $user = User::where('level','Warga')->where('id', $id)->firstOrFail();
+        $warga = Warga::where('user_id', $id)->firstOrFail();
+        return view('adminwarga.warga.detail', compact('warga'));
+    }
 
     public function editProfil($id) {
-    //menampilkan/memanggil data profil dari tabel profil di db sebanyak 10 data karena terdapat paginate.
-    $warga = Warga::find($id);
-    //kemudian di kembalikan/dikirim datanya ke folder profil file index.blade.php
-    return view('warga.warga.edit', compact('warga'));
+    $warga = Warga::where('user_id', $id)->firstOrFail();
+    return view('adminwarga.warga.edit', compact('warga'));
 
     }
 
     public function updateProfil(Request $request, $id) {
   
-        $warga = Warga::find($id);
+        $warga = Warga::where('user_id', $id)->firstOrFail();
         $warga->no_kk = $request->no_kk;
         $warga->nik = $request->nik;
         $warga->nama = $request->nama;
@@ -156,14 +159,23 @@ class UserController extends Controller
         $warga->alamat = $request->alamat;
         $warga->update();
 
-        return view('warga.warga.detail', compact('warga'));
+        return view('adminwarga.warga.detail', compact('warga'));
         
     }
 
-    public function deleteWarga($id) {
-        $warga = User::find($id);
-        $warga->delete();
+    public function validasi($id) {
+  
+        $warga = Warga::where('user_id', $id)->firstOrFail();
+        $warga->status = 'Confirmed';
+        $warga->update();
+        toastr()->success('Data Sukses Divalidasi.');
+        return redirect('warga');
+    }
 
-        return view('admin.warga.warga', compact('warga'));
+    public function deleteWarga($id) {
+        $warga = User::findOrfail($id);
+        $warga->delete();
+        toastr()->success('Data Sukses Dihapus.');
+        return redirect('warga');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard warga Warga')
+@section('title', 'Detail Profil')
 
 @section('content')
           <!-- About Me Box -->
@@ -64,8 +64,8 @@
             </div>
             <!-- /.box-body -->
 
-            <a href="{{ url('/beranda') }}" class="btn bg-purple margin">Kembali</a>
-            <a href="{{ url ('/editProfil', $warga->id) }}" class="btn bg-purple margin">Edit</a>
+            <a href="{{ url('warga') }}" class="btn bg-purple margin">Kembali</a>
+            <a href="{{ url('editProfile', $warga->user_id) }}" class="btn bg-purple margin">Edit</a>
           </div>
           <!-- /.box -->
           </div>

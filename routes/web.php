@@ -27,10 +27,15 @@ Route::get('/logout', 'UserController@logout');
 
 // Route Data Warga
 Route::get('/warga', 'UserController@show');
-Route::get('/editProfil/{id}', 'UserController@editProfil');
-Route::get('/detailProfile/{id}', 'UserController@detailProfil');
+Route::get('/editProfile/{id}', 'UserController@editProfil');
+Route::get('/detail/{id}', 'UserController@detail');
 Route::patch('/updateProfil/{id}', 'UserController@updateProfil');
 Route::get('/deleteWarga/{id}', 'UserController@deleteWarga');
+
+Route::get('/detailprofil/{id}', 'UserController@detailProfil');
+
+//Route validasi status
+Route::get('/validasi/{id}', 'UserController@validasi');
 
 
 Route::get('/detailwarga', function () {
