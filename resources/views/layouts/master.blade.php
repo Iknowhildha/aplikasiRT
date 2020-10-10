@@ -106,7 +106,7 @@
         <li ><a href="{{ url('beranda') }}"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
         <li ><a href="{{ url('warga') }}"><i class="fa fa-id-card-o"></i> <span>Data Warga</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-envelope-open"></i> <span>Surat Pengantar</span></a></li>
-        <li ><a href="{{ url('') }}"><i class="fa fa-calendar-minus-o"></i> <span>Agenda</span></a></li>
+        <li ><a href="{{ url('agenda') }}"><i class="fa fa-calendar-minus-o"></i> <span>Agenda</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-user"></i> <span>Data User</span></a></li>

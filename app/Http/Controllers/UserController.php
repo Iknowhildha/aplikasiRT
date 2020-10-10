@@ -122,7 +122,6 @@ class UserController extends Controller
     }
 
     public function show() {
-
     $warga = Warga::paginate(3);
     return view('adminwarga.warga.warga', compact('warga'));
     }

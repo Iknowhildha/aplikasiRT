@@ -42,9 +42,7 @@ Route::get('/detailwarga', function () {
     return view('admin.warga.detail');
 });
 
-Route::get('/agenda', function () {
-    return view('warga.agenda');
-});
+Route::resource('/agenda', 'AgendaController');
 
 Route::get('/keuangan', function () {
     return view('warga.keuangan');

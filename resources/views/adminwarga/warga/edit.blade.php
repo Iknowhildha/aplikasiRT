@@ -10,7 +10,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="{{ url ('/updateProfil', $warga->id) }}" method="POST">
+              <form role="form" action="{{ url ('/updateProfil', $warga->user_id) }}" method="POST">
                 {{ csrf_field() }}
                 @method('patch')
                 <!-- text input -->
