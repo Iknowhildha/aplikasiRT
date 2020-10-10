@@ -5,9 +5,8 @@
 @section('content')
 
 <div class="callout callout-warning">
-    <h4>Reminder!</h4>
-    Instructions for how to use modals are available on the
-    <a href="http://getbootstrap.com/javascript/#modals">Bootstrap documentation</a>
+    <h4>Selamat datang {{Session::get('nama')}}</h4>
+    <h5>Anda Berhasil Login sebagai {{Session::get('level')}}</h5>
   </div>
 
         <div class="row">

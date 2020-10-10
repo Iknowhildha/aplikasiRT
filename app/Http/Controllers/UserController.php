@@ -134,7 +134,6 @@ class UserController extends Controller
 
     public function detail($id) {
         
-        $user = User::where('level','Warga')->where('id', $id)->firstOrFail();
         $warga = Warga::where('user_id', $id)->firstOrFail();
         return view('adminwarga.warga.detail', compact('warga'));
     }
