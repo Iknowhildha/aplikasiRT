@@ -110,6 +110,8 @@
         <li ><a href="{{ url('') }}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-user"></i> <span>Data User</span></a></li>
+        <li ><a href="{{ url('inventaris') }}"><i class="fa fa-user"></i> <span>Inventaris</span></a></li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

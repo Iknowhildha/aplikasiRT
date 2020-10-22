@@ -17,8 +17,13 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/wargadesain', function () {
+    return view('layouts/master-warga');
+});
+
 //Route Login
-Route::get('/beranda', 'UserController@index');
+Route::get('/beranda', 'UserController@index');//berandaadmin
+Route::get('/berandawarga', 'UserController@indexwarga');//berandawarga
 Route::get('/login', 'UserController@login');
 Route::post('/loginPost', 'UserController@loginPost');
 Route::get('/register', 'UserController@register');
@@ -43,6 +48,8 @@ Route::get('/detailwarga', function () {
 });
 
 Route::resource('/agenda', 'AgendaController');
+Route::resource('/inventaris', 'InventarisController');
+
 
 Route::get('/keuangan', function () {
     return view('warga.keuangan');

@@ -19,6 +19,15 @@ class UserController extends Controller
         }
     }
 
+    public function indexwarga(){
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }
+        else{
+            return view('beranda-warga');
+        }
+    }
+
     public function login(){
         if(Session::get('login')){
             return view('beranda');        
@@ -52,8 +61,13 @@ class UserController extends Controller
                         Session::put('alamat',$cariwarga->alamat);
                         Session::put('level',$cariuser->level);
                         Session::put('login',TRUE);
+
+                        if ($cariuser->level === "Warga") {
+                            return redirect('berandawarga');
+                        } else {
+                            return redirect('beranda');
+                        }
                         
-                        return redirect('beranda');
                     }else{
                         toastr()->warning('Password atau Username, Salah !');
                         return redirect('login');
