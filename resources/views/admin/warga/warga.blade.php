@@ -32,20 +32,17 @@
                     <td>{{ $data->jenis_kelamin }}</td>
                     <td>{{ $data->no_hp }}</td>
                     <td>
-                        @if (Session::get('level') == "Warga")
-                        <a href="{{ url('/detail', $data->user_id) }}"
-                          class="btn bg-purple margin btn-xs">Details</a>
-                            @elseif($data->status == "Waiting")
-                            <a href="{{ url('/detail', $data->user_id) }}"
+                            @if($data->status == "Waiting")
+                            <a href="{{ url('admin/detail', $data->user_id) }}"
                               class="btn bg-purple margin btn-xs">Details</a>
-                              <a href="{{ url('deleteWarga', $data->user_id) }}"
+                              <a href="{{ url('admin/deleteWarga', $data->user_id) }}"
                                   onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
                                   class="btn bg-purple margin btn-xs">Hapus</a>
-                              <a href="{{ url('validasi', $data->user_id) }}" class="btn bg-purple margin btn-xs">Validasi</a>
+                              <a href="{{ url('admin/validasi', $data->user_id) }}" class="btn bg-purple margin btn-xs">Validasi</a>
                               @else
-                              <a href="{{ url('/detail', $data->user_id) }}"
+                              <a href="{{ url('admin/detail', $data->user_id) }}"
                                 class="btn bg-purple margin btn-xs">Details</a>
-                                <a href="{{ url('deleteWarga', $data->user_id) }}"
+                                <a href="{{ url('admin/deleteWarga', $data->user_id) }}"
                                     onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
                                     class="btn bg-purple margin btn-xs">Hapus</a>
                                 @endif

@@ -7,30 +7,27 @@ use App\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function beranda(){
         if(!Session::get('login')){
             return redirect('login')->with('alert','Kamu harus login dulu');
         }
-        else{
-            return view('beranda');
+        elseif(Session::get('level') == 'Admin'){
+            return view('admin.beranda');
+        }else{
+            return redirect('warga.beranda');
         }
     }
 
-    public function indexwarga(){
-        if(!Session::get('login')){
-            return redirect('login')->with('alert','Kamu harus login dulu');
-        }
-        else{
-            return view('beranda-warga');
-        }
-    }
 
     public function login(){
-        if(Session::get('login')){
-            return view('beranda');        
+        if(Session::get('login') && Session::get('level') == 'Admin'){
+            return redirect('admin/beranda');        
+        }elseif(Session::get('login') && Session::get('level') == 'Warga'){
+            return redirect('beranda');
         }
         return view('login');
     }
@@ -63,9 +60,9 @@ class UserController extends Controller
                         Session::put('login',TRUE);
 
                         if ($cariuser->level === "Warga") {
-                            return redirect('berandawarga');
-                        } else {
                             return redirect('beranda');
+                        } else {
+                            return redirect('admin/beranda');
                         }
                         
                     }else{
@@ -135,25 +132,25 @@ class UserController extends Controller
         return redirect('login');
     }
 
-    public function show() {
-    $warga = Warga::paginate(3);
-    return view('adminwarga.warga.warga', compact('warga'));
+    public function warga() {
+    $warga = Warga::paginate(10);
+    return view('admin.warga.warga', compact('warga'));
     }
 
     public function detailProfil($id) {
         $warga = Warga::where('user_id', $id)->firstOrFail();
-        return view('adminwarga.warga.detailprofil', compact('warga'));
+        return view('admin.warga.detailprofil', compact('warga'));
     }
 
     public function detail($id) {
         
         $warga = Warga::where('user_id', $id)->firstOrFail();
-        return view('adminwarga.warga.detail', compact('warga'));
+        return view('admin.warga.detail', compact('warga'));
     }
 
     public function editProfil($id) {
     $warga = Warga::where('user_id', $id)->firstOrFail();
-    return view('adminwarga.warga.edit', compact('warga'));
+    return view('admin.warga.edit', compact('warga'));
 
     }
 
@@ -171,7 +168,7 @@ class UserController extends Controller
         $warga->alamat = $request->alamat;
         $warga->update();
 
-        return view('adminwarga.warga.detail', compact('warga'));
+        return view('admin.warga.detail', compact('warga'));
         
     }
 
@@ -181,13 +178,13 @@ class UserController extends Controller
         $warga->status = 'Confirmed';
         $warga->update();
         toastr()->success('Data Sukses Divalidasi.');
-        return redirect('warga');
+        return redirect::to('admin/warga');
     }
 
     public function deleteWarga($id) {
         $warga = User::findOrfail($id);
         $warga->delete();
         toastr()->success('Data Sukses Dihapus.');
-        return redirect('warga');
+        return redirect::to('admin/warga');
     }
 }

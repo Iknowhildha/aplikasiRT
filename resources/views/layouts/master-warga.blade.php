@@ -15,29 +15,31 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('starbootstrap/css/styles.css') }}" rel="stylesheet" />
+        @toastr_css
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Warga</a>
+                <a class="navbar-brand js-scroll-trigger" href="{{ url('/beranda') }}">Warga</a>
                 <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Data warga</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Surat Pengantar</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Agenda</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('warga') }}">Data warga</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('suratpengantar') }}">Surat Pengantar</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('agenda') }}">Agenda</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Berita</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Keuangan</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Inventaris</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('inventaris') }}">Inventaris</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{Session::get('username')}}  <i class="fa fa-user"></i>
+                                <i class="fa fa-user"></i> {{Session::get('username')}} 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('editProfile', Session::get('id')) }}"><i class="fa fa-user"></i> Detail Profil</a>
                               <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-sign-in"></i> Logout</a>
                             </div>
                           </li>
@@ -61,7 +63,7 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dashboard Warga</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">@yield('title')</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -126,4 +128,7 @@
         <!-- Core theme JS-->
         <script src="{{ asset('starbootstrap/js/scripts.js') }}"></script>
     </body>
+    @jquery
+@toastr_js
+@toastr_render
 </html>

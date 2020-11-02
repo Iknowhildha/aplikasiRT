@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Agenda;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class AgendaController extends Controller
 {
@@ -19,9 +20,12 @@ class AgendaController extends Controller
             toastr()->warning('Kamu harus login terlebih dahulu.');
             return redirect('login');
         }
-        else{
+        elseif(Session::get('level') == 'Admin'){
             $agenda = Agenda::paginate(10);
-            return view('adminwarga.agenda.agenda', compact('agenda'));
+            return view('admin.agenda.agenda', compact('agenda'));
+        }else{
+            $agenda = Agenda::paginate(10);
+            return view('warga.agenda.agenda', compact('agenda'));
         }
     }
 
@@ -37,7 +41,7 @@ class AgendaController extends Controller
             return redirect('login');
         }
         else{
-            return view('adminwarga.agenda.tambah-agenda');
+            return view('admin.agenda.tambah-agenda');
         }
     }
 
@@ -71,8 +75,14 @@ class AgendaController extends Controller
      */
     public function show($id)
     {
-        $agenda = Agenda::where('id', $id)->firstOrFail();
-        return view('adminwarga.agenda.detail-agenda', compact('agenda'));
+        if(Session::get('level') == 'Admin'){
+            $agenda = Agenda::where('id', $id)->firstOrFail();
+            return view('admin.agenda.detail-agenda', compact('agenda'));
+        }else{
+            $agenda = Agenda::where('id', $id)->firstOrFail();
+            return view('warga.agenda.detail-agenda', compact('agenda'));
+        }
+        
     }
 
     /**
@@ -84,7 +94,7 @@ class AgendaController extends Controller
     public function edit($id)
     {
         $agenda = Agenda::where('id', $id)->firstOrFail();
-        return view('adminwarga.agenda.edit-agenda', compact('agenda'));
+        return view('admin.agenda.edit-agenda', compact('agenda'));
     }
 
     /**
@@ -107,7 +117,7 @@ class AgendaController extends Controller
         $agenda->update();
         toastr()->success('Data agenda berhasil diedit');
 
-        return redirect('agenda');
+        return redirect::to('admin/agenda');
     }
 
     /**
@@ -121,6 +131,6 @@ class AgendaController extends Controller
         $agenda = Agenda::findOrfail($id);
         $agenda->delete();
         toastr()->success('Data Sukses Dihapus.');
-        return redirect('agenda');
+        return redirect::to('admin/agenda');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Inventaris;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class InventarisController extends Controller
 {
@@ -19,9 +20,12 @@ class InventarisController extends Controller
             toastr()->warning('Kamu harus login terlebih dahulu.');
             return redirect('login');
         }
-        else{
+        elseif(Session::get('level') != "Warga"){
             $inventaris = Inventaris::paginate(10);
-            return view('adminwarga.inventaris.inventaris', compact('inventaris'));
+            return view('admin.inventaris.inventaris', compact('inventaris'));
+        }else{
+            $inventaris = Inventaris::paginate(10);
+            return view('warga.inventaris.inventaris', compact('inventaris'));
         }
     }
 
@@ -37,7 +41,7 @@ class InventarisController extends Controller
             return redirect('login');
         }
         else{
-            return view('adminwarga.inventaris.tambah-inventaris');
+            return view('admin.inventaris.tambah-inventaris');
         }
     }
 
@@ -60,7 +64,7 @@ class InventarisController extends Controller
 
         toastr()->success('Data inventaris berhasil ditambahkan');
 
-        return redirect('inventaris');
+        return redirect::to('admin/inventaris');
     }
 
     /**
@@ -71,8 +75,14 @@ class InventarisController extends Controller
      */
     public function show($id)
     {
-        $inventaris = Inventaris::where('id', $id)->firstOrFail();
-        return view('adminwarga.inventaris.detail-inventaris', compact('inventaris'));
+        if(Session::get('level') != "Warga"){
+            $inventaris = Inventaris::where('id', $id)->firstOrFail();
+        return view('admin.inventaris.detail-inventaris', compact('inventaris'));
+        }else{
+            $inventaris = Inventaris::where('id', $id)->firstOrFail();
+            return view('warga.inventaris.detail-inventaris', compact('inventaris'));
+        }
+        
     }
 
     /**
@@ -84,7 +94,7 @@ class InventarisController extends Controller
     public function edit($id)
     {
         $inventaris = Inventaris::where('id', $id)->firstOrFail();
-        return view('adminwarga.inventaris.edit-inventaris', compact('inventaris'));
+        return view('admin.inventaris.edit-inventaris', compact('inventaris'));
     }
 
     /**
@@ -106,7 +116,7 @@ class InventarisController extends Controller
         $inventaris->update();
         toastr()->success('Data inventaris berhasil diedit');
 
-        return redirect('inventaris');
+        return redirect::to('admin/inventaris');
     }
 
     /**
@@ -120,6 +130,6 @@ class InventarisController extends Controller
         $inventaris = Inventaris::findOrfail($id);
         $inventaris->delete();
         toastr()->success('Data Sukses Dihapus.');
-        return redirect('inventaris');
+        return redirect::to('admin/inventaris');
     }
 }

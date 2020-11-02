@@ -17,38 +17,58 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/wargadesain', function () {
-    return view('layouts/master-warga');
-});
-
 //Route Login
-Route::get('/beranda', 'UserController@index');//berandaadmin
-Route::get('/berandawarga', 'UserController@indexwarga');//berandawarga
 Route::get('/login', 'UserController@login');
 Route::post('/loginPost', 'UserController@loginPost');
 Route::get('/register', 'UserController@register');
 Route::post('/registerPost', 'UserController@registerPost');
 Route::get('/logout', 'UserController@logout');
 
-// Route Data Warga
-Route::get('/warga', 'UserController@show');
+Route::group(['prefix'=>'admin'], function() {
+//beranda admin
+Route::get('/beranda', 'UserController@beranda');
+// Route Data Warga Sisi Admin
+Route::get('/warga', 'UserController@warga');
 Route::get('/editProfile/{id}', 'UserController@editProfil');
 Route::get('/detail/{id}', 'UserController@detail');
 Route::patch('/updateProfil/{id}', 'UserController@updateProfil');
 Route::get('/deleteWarga/{id}', 'UserController@deleteWarga');
-
-Route::get('/detailprofil/{id}', 'UserController@detailProfil');
-
 //Route validasi status
 Route::get('/validasi/{id}', 'UserController@validasi');
+//Route Crud Agenda
+Route::resource('/agenda', 'AgendaController');
+//Route Crud Inventaris
+Route::resource('/inventaris', 'InventarisController');
+//Route Crud Keuagan
+Route::resource('/keuangan', 'KeuanganController');
+//Route Crud surat Pengantar
+Route::resource('/suratpengantar', 'SuratpengantarController');
+});
 
+//beranda warga
+Route::get('/beranda', 'WargaController@beranda');
 
+// Route Data Warga
+Route::get('/warga', 'WargaController@warga');
+Route::get('/editProfile/{id}', 'WargaController@editProfil');
+Route::get('/detail/{id}', 'WargaController@detail');
+Route::patch('/updateProfil/{id}', 'WargaController@updateProfil');
+Route::get('/deleteWarga/{id}', 'WargaController@deleteWarga');
+
+//Route Detail Profil
+Route::get('/detailprofil/{id}', 'UserController@detailProfil');
+
+//Detail Warga
 Route::get('/detailwarga', function () {
     return view('admin.warga.detail');
 });
 
+//Route Crud Agenda
 Route::resource('/agenda', 'AgendaController');
+//Route Crud Inventaris
 Route::resource('/inventaris', 'InventarisController');
+//Route Crud surat Pengantar
+Route::resource('/suratpengantar', 'SuratpengantarController');
 
 
 Route::get('/keuangan', function () {

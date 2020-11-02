@@ -4,7 +4,7 @@
 
 @section('content')
 
-  <a href="{{ route('inventaris.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah inventaris</a><br><br>
+  <a href="{{ url('admin/inventaris/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah inventaris</a><br><br>
 
 
 <div class="box">
@@ -37,13 +37,13 @@
                     <td>{{ $data->keterangan_inventaris }}</td>
                     <td>
                       @if (Session::get('level') == "Warga")
-                      <a href="{{ route('inventaris.show', $data->id) }}" class="btn bg-purple margin btn-xs">Detail</a>
+                      <a href="{{ url('admin/inventaris/show', $data->id) }}" class="btn bg-purple margin btn-xs">Detail</a>
                             @else
                             
                               <form  action="{{ route('inventaris.destroy', $data->id) }}" id="delete" method="post">
                                 @csrf
                                 @method('delete')
-                                <a href="{{ route('inventaris.edit', $data->id) }}"
+                                <a href="{{ url('admin/inventaris/'.$data->id.'/edit') }}"
                                   class="btn bg-purple margin btn-xs">Edit</a>
                                   <button type="submit" 
                                     onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
