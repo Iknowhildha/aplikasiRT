@@ -1,18 +1,15 @@
-@extends('layouts.master')
+@extends('layouts.master-warga')
 
-@section('title', 'Dashboard Keuangan')
+@section('title', 'Data Keuangan')
 
 @section('content')
-
-  <a href="{{ url('admin/keuangan/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah keuangan</a><br><br>
-
-
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Data Keuangan</h3>
+<div class="col-md-12 col-sm-12">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Data Keuangan</h3>
     </div>
-    <!-- /.box-header -->
-    <div class="box-body">
+    <!-- /.card-header -->
+    <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -21,7 +18,6 @@
                     <th>Uraian</th>
                     <th>Uang Masuk</th>
                     <th>Uang Keluar</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,22 +29,6 @@
                     <td>{{ $data->uraian }}</td>
                     <td>{{ $data->uang_masuk }}</td>
                     <td>{{ $data->uang_keluar }}</td>
-                    <td>
-                      @if (Session::get('level') == "Warga")
-                      <a href="{{ url('admin/keuangan/show', $data->id) }}" class="btn bg-purple margin btn-xs">Detail</a>
-                            @else
-                            
-                              <form  action="{{ route('keuangan.destroy', $data->id) }}" id="delete" method="post">
-                                @csrf
-                                @method('delete')
-                                <a href="{{ url('admin/keuangan/'.$data->id.'/edit') }}"
-                                  class="btn bg-purple margin btn-xs">Edit</a>
-                                  <button type="submit" 
-                                    onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
-                                    class="btn bg-purple margin btn-xs">Hapus</button>
-                            </form>
-    
-                              @endif
                     </td>
                 </tr>
                 @endforeach
@@ -71,9 +51,10 @@
         <br>
         {{ $keuangan->links() }}
     </div>
-    <!-- /.box-body -->
+    <!-- /.card-body -->
 </div>
-<!-- /.box -->
+<!-- /.card -->
+</div>
 
 
 @endsection

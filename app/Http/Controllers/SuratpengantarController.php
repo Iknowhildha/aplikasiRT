@@ -40,9 +40,20 @@ class SuratpengantarController extends Controller
         if(!Session::get('login')){
             toastr()->warning('Kamu harus login terlebih dahulu.');
             return redirect('login');
-        }
-        else{
-            return view('warga.surat-pengantar.surat-tambah');
+        }else{
+            $AWAL = '419.72.02.06.42';
+            // karna array dimulai dari 0 maka kita tambah di awal data kosong
+            // bisa juga mulai dari "1"=>"I"
+            $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+            $noUrutAkhir = \App\Suratpengantar::max('nomor_surat');
+            $no = 1;
+            if($noUrutAkhir) {
+                $nomorotomatis =  sprintf("%03s", abs($noUrutAkhir + 1)). '/' . $AWAL .'/' . $bulanRomawi[date('n')] .'/' . date('Y');
+            }
+            else {
+                $nomorotomatis = sprintf("%03s", $no). '/' . $AWAL .'/' . $bulanRomawi[date('n')] .'/' . date('Y');
+            }
+            return view('warga.surat-pengantar.surat-tambah', compact('nomorotomatis'));
         }
     }
 
@@ -88,8 +99,14 @@ class SuratpengantarController extends Controller
      */
     public function edit($id)
     {
-        $surat = Suratpengantar::where('id', $id)->firstOrFail();
-        return view('warga.surat-pengantar.edit-surat', compact('surat'));
+        if(Session::get('level') == 'Admin'){
+            $surat = Suratpengantar::where('id', $id)->firstOrFail();
+            return view('admin.surat-pengantar.edit-surat', compact('surat'));
+        }else{
+            $surat = Suratpengantar::where('id', $id)->firstOrFail();
+            return view('warga.surat-pengantar.edit-surat', compact('surat'));
+        }
+       
     }
 
     /**
@@ -101,14 +118,27 @@ class SuratpengantarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $surat = Suratpengantar::where('id', $id)->firstOrFail();
-        $surat->nomor_surat = $request->nomor;
-        $surat->tanggal = $request->tanggal;
-        $surat->status_perkawinan = $request->status;
-        $surat->pekerjaan = $request->pekerjaan;
-        $surat->pelayanan = $request->pelayanan;
-        $surat->update();
-        toastr()->success('Data surat berhasil diedit');
+        if(Session::get('level') == 'Admin'){
+            $surat = Suratpengantar::where('id', $id)->firstOrFail();
+            $surat->nomor_surat = $request->nomor;
+            $surat->tanggal = $request->tanggal;
+            $surat->status_perkawinan = $request->statusperkawinan;
+            $surat->pekerjaan = $request->pekerjaan;
+            $surat->pelayanan = $request->pelayanan;
+            $surat->status = $request->status;
+            $surat->update();
+            toastr()->success('Data surat berhasil diedit');
+        }else{
+            $surat = Suratpengantar::where('id', $id)->firstOrFail();
+            $surat->nomor_surat = $request->nomor;
+            $surat->tanggal = $request->tanggal;
+            $surat->status_perkawinan = $request->statusperkawinan;
+            $surat->pekerjaan = $request->pekerjaan;
+            $surat->pelayanan = $request->pelayanan;
+            $surat->update();
+            toastr()->success('Data surat berhasil diedit');
+        }
+        
 
         return redirect('suratpengantar');
     }

@@ -22,12 +22,16 @@
               <textarea name="uraian" id="" class="form-control" cols="30" rows="2">{{ $keuangan->uraian }}</textarea>
             </div>
             <div class="form-group">
-              <label>Uang Masuk</label>
-              <input type="number" class="form-control"  name="uangmasuk" value="{{ $keuangan->uang_masuk }}">
+              <label>Kategori</label>
+              <select name="jenis" class="form-control">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="uangmasuk" @if ($keuangan->uang_masuk != 0) selected @endif>Uang Masuk</option>
+                <option value="uangkeluar" @if ($keuangan->uang_keluar != 0) selected @endif >Uang Keluar</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Uang Keluar</label>
-              <input type="number" class="form-control" name="uangkeluar" value="{{ $keuangan->uang_keluar }}">
+              <label>Nominal</label>
+              <input type="number" class="form-control"  name="nominal" @if($keuangan->uang_masuk != 0) value="{{ $keuangan->uang_masuk }}" @else value="{{ $keuangan->uang_keluar }}" @endif value="">
             </div>
           <button type="submit" class="btn bg-purple margin">Update</button>
         </form>

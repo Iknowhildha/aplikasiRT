@@ -20,6 +20,7 @@ class CreateSuratPengantarTable extends Migration
             $table->string('status_perkawinan');
             $table->string('pekerjaan');
             $table->string('pelayanan');
+            $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

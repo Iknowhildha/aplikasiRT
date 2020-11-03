@@ -19,8 +19,6 @@ class CreateKeuanganTable extends Migration
             $table->text('uraian');
             $table->integer('uang_masuk')->nullable();
             $table->integer('uang_keluar')->nullable();
-            $table->integer('saldo');
-            $table->integer('total');
             $table->timestamps();
         });
     }

@@ -32,7 +32,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('suratpengantar') }}">Surat Pengantar</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('agenda') }}">Agenda</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Berita</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="">Keuangan</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('keuangan') }}">Keuangan</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('inventaris') }}">Inventaris</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

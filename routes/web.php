@@ -39,7 +39,7 @@ Route::get('/validasi/{id}', 'UserController@validasi');
 Route::resource('/agenda', 'AgendaController');
 //Route Crud Inventaris
 Route::resource('/inventaris', 'InventarisController');
-//Route Crud Keuagan
+//Route Crud Keuangan
 Route::resource('/keuangan', 'KeuanganController');
 //Route Crud surat Pengantar
 Route::resource('/suratpengantar', 'SuratpengantarController');
@@ -69,11 +69,8 @@ Route::resource('/agenda', 'AgendaController');
 Route::resource('/inventaris', 'InventarisController');
 //Route Crud surat Pengantar
 Route::resource('/suratpengantar', 'SuratpengantarController');
-
-
-Route::get('/keuangan', function () {
-    return view('warga.keuangan');
-});
+//Route Crud Keuangan
+Route::resource('/keuangan', 'KeuanganController');
 
 Route::get('/warga1', function () {
     return view('admin.warga.warga');

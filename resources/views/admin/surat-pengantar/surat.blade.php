@@ -1,17 +1,15 @@
-@extends('layouts.master-warga')
+@extends('layouts.master')
 
 @section('title','Data surat')
 
 @section('content')
 <div class="col-md-12 col-sm-12">
-    <a href="{{ route('suratpengantar.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Tambah</a><br><br>
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Data surat</h3>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Data surat</h3>
     </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        <div class="table-responsive">
+    <!-- /.box-header -->
+    <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -38,25 +36,22 @@
                     <td>{{ $data->pelayanan }}</td>
                     <td>{{ $data->pekerjaan }}</td>
                     <td>@if ($data->status == 'Belum Tervalidasi')
-                        <span class="badge badge-warning">{{ $data->status }}</span>
+                        <span class="label label-warning">{{ $data->status }}</span>
                     @else
-                    <span class="badge badge-success">{{ $data->status }}</span>
+                    <span class="label label-success">{{ $data->status }}</span>
                     @endif</td>
-                    <td class="text-center">
-                        @if ($data->status == "Belum Tervalidasi")                              
+                    <td>
                                 <form  action="{{ route('suratpengantar.destroy', $data->id) }}" id="delete" method="post">
                                   @csrf
                                   @method('delete')
-                                  <a href="{{ url('suratpengantar/'.$data->id).'/edit' }}"
-                                    class="btn btn-info btn-sm">Edit</a>
+                                  <a href="{{ url('admin/suratpengantar/'.$data->id).'/edit' }}"
+                                    class="btn btn-info btn-sm">Detail</a>
                                     <button type="submit" 
                                       onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
                                       class="btn btn-danger btn-sm">Hapus</button>
+                                      <a href="{{ url('admin/suratpengantar/'.$data->id).'/cetak' }}"
+                                        class="btn btn-default btn-sm">Cetak</a>
                               </form>
-                              @else
-                              <a href="{{ url('suratpengantar/'.$data->id).'/cetak' }}"
-                                class="btn btn-info btn-sm">Cetak</a>
-                                @endif
                     </td>
                 </tr>
                 @endforeach
@@ -77,12 +72,11 @@
                 </tr>
             </tfoot>
         </table>
-        </div>
         <br>
         {{ $surat->links() }}
     </div>
-    <!-- /.card-body -->
+    <!-- /.box-body -->
 </div>
-<!-- /.card -->
+<!-- /.box -->
 </div>
 @endsection

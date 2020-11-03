@@ -54,28 +54,20 @@ class KeuanganController extends Controller
      */
     public function store(Request $request)
     {
-        $masuk = DB::table('keuangan')->sum('uang_masuk');
-            $keluar = DB::table('keuangan')->sum('uang_keluar');
-            $saldo = $masuk - $keluar;
-        if($request['uangmasuk'] != 0){
-         
+ 
+        if($request['jenis'] == 'uangmasuk'){
             Keuangan::create([
                 'tanggal_keuangan' => $request['tanggal'],
                 'uraian' => $request['uraian'],
-                'uang_masuk' => $request['uangmasuk'],
+                'uang_masuk' => $request['nominal'],
                 'uang_keluar' => 0,
-                'saldo' => $saldo + $request['uangmasuk'],
-                'total' => $request['uangmasuk']
             ]);
-        }elseif($request['uangkeluar'] != 0){
-            
+        }elseif($request['jenis'] == 'uangkeluar'){
             Keuangan::create([
                 'tanggal_keuangan' => $request['tanggal'],
                 'uraian' => $request['uraian'],
                 'uang_masuk' => 0,
-                'uang_keluar' => $request['uangkeluar'],
-                'saldo' => $saldo - $request['uangkeluar'],
-                'total' => $request['uangkeluar']
+                'uang_keluar' => $request['nominal'],
             ]);
         }
 
@@ -118,38 +110,19 @@ class KeuanganController extends Controller
     public function update(Request $request, $id)
     {
         $keuangan = Keuangan::where('id', $id)->firstOrFail();
-        $masuk = DB::table('keuangan')->sum('uang_masuk');
-        $keluar = DB::table('keuangan')->sum('uang_keluar');
-        $saldo = $masuk - $keluar;
-        //dikembalikan awal dulu dikurang saldo lama
-        
-
-        if($request->uangmasuk != 0){
-            $keuangan->saldo = $request->uangmasuk;
+        if($request->jenis == 'uangmasuk'){
             $keuangan->tanggal_keuangan = $request->tanggal;
             $keuangan->uraian = $request->uraian;
-            $keuangan->uang_masuk = $request->uangmasuk;
+            $keuangan->uang_masuk = $request->nominal;
+            $keuangan->uang_keluar = 0;
             $keuangan->update();
             toastr()->success('Data Keuangan berhasil diedit');
             return redirect::to('admin/keuangan');
-        }elseif($request->uangkeluar != 0){
-            //dikurang dulu
-            $saldoawal = $keuangan->saldo - $keuangan->uang_keluar;
-            $keuangan->saldo = $saldo - $request->uangkeluar;
+        }elseif($request->jenis == 'uangkeluar'){
             $keuangan->tanggal_keuangan = $request->tanggal;
             $keuangan->uraian = $request->uraian;
-            $keuangan->uang_keluar = $request->uangkeluar;
-            $keuangan->update();
-            toastr()->success('Data Keuangan berhasil diedit');
-            return redirect::to('admin/keuangan');
-        }elseif($request->uangkeluar != 0 && $request->uangmasuk != 0){
-            $saldoawal = $keuangan->saldo - $request->uangkeluar - $request->uangmasuk;
-            $keuangan->saldo = $saldoawal - $request->uangkeluar + $request->uangmasuk;
-            $keuangan->tanggal_keuangan = $request->tanggal;
-            $keuangan->uraian = $request->uraian;
-            $keuangan->uang_masuk = $request->uangmasuk;
-            $keuangan->uang_keluar = $request->uangkeluar;
-            $keuangan->saldo = $keuangan->saldo - $request->uangkeluar + $request->uangmasuk;
+            $keuangan->uang_keluar = $request->nominal;
+            $keuangan->uang_masuk = 0;
             $keuangan->update();
             toastr()->success('Data Keuangan berhasil diedit');
             return redirect::to('admin/keuangan');
@@ -164,6 +137,9 @@ class KeuanganController extends Controller
      */
     public function destroy($id)
     {
-     
+        $keuangan = Keuangan::findOrfail($id);
+        $keuangan->delete();
+        toastr()->success('Data Sukses Dihapus.');
+        return redirect::to('admin/keuangan');
     }
 }

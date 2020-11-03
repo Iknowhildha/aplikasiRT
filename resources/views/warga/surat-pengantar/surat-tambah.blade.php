@@ -14,7 +14,7 @@
           @csrf
           <div class="form-group">
               <label>Nomor Surat</label>
-              <input type="text" class="form-control" name="nomor">
+              <input type="text" class="form-control" name="nomor" value="{{ $nomorotomatis }}" readonly>
             </div>
             <div class="form-group">
               <label>Tanggal</label>

@@ -21,12 +21,16 @@
               <textarea name="uraian" id="" class="form-control" cols="30" rows="2"></textarea>
             </div>
             <div class="form-group">
-              <label>Uang Masuk</label>
-              <input type="number" class="form-control"  name="uangmasuk">
+              <label>Kategori</label>
+              <select name="jenis" class="form-control">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="uangmasuk">Uang Masuk</option>
+                <option value="uangkeluar">Uang Keluar</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Uang Keluar</label>
-              <input type="number" class="form-control" name="uangkeluar">
+              <label>Nominal</label>
+              <input type="number" class="form-control"  name="nominal">
             </div>
           <button type="submit" class="btn bg-purple margin">Tambah</button>
         </form>

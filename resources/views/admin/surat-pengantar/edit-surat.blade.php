@@ -1,15 +1,15 @@
-@extends('layouts.master-warga')
+@extends('layouts.master')
 
-@section('title', 'Edit Data Surat Pengantar')
+@section('title', 'Validasi Data Surat Pengantar')
 
 @section('content')
 <div class="col-md-12 col-sm-12">
-<div class="card">
-  <div class="card-header">
-      <h3 class="card-title">Edit Surat Pegantar</h3>
+<div class="box">
+  <div class="box-header">
+      <h3 class="box-title">Validasi Surat Pegantar</h3>
   </div>
-  <!-- /.card-header -->
-  <div class="card-body">
+  <!-- /.box-header -->
+  <div class="box-body">
       <form role="form" action="{{ route('suratpengantar.update', $surat->id) }}" method="POST">
           @csrf
           @method('Patch')
@@ -38,11 +38,19 @@
             <label>Pelayanan</label>
             <input type="text" class="form-control" name="pelayanan" value="{{ $surat->pelayanan }}">
         </div>
-          <button type="submit" class="btn btn-primary btn-block">Update</button>
+        <div class="form-group">
+          <label>Status Surat </label>
+          <select class="form-control" name="status">
+            <option>-- Pilih Status Surat --</option>
+            <option @if ($surat->status == 'Belum Tervalidasi') Selected @endif>Belum Tervalidasi</option>
+            <option @if ($surat->status == 'Tervalidasi') Selected @endif>Tervalidasi</option>
+          </select>              
+        </div>
+          <button type="submit" class="btn btn-success btn-block">Validasi</button>
         </form>
   </div>
-  <!-- /.card-body -->
+  <!-- /.box-body -->
 </div>
-<!-- /.card -->
+<!-- /.box -->
 </div>
 @endsection
