@@ -108,7 +108,7 @@
         <li ><a href="{{ url('admin/suratpengantar') }}"><i class="fa fa-envelope-open"></i> <span>Surat Pengantar</span></a></li>
         <li ><a href="{{ url('admin/agenda') }}"><i class="fa fa-calendar-minus-o"></i> <span>Agenda</span></a></li>
         <li ><a href="{{ url('admin/keuangan') }}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
-        <li ><a href="{{ url('') }}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
+        <li ><a href="{{ url('admin/berita') }}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li ><a href="{{ url('') }}"><i class="fa fa-user"></i> <span>Data User</span></a></li>
         <li ><a href="{{ url('admin/inventaris') }}"><i class="fa fa-user"></i> <span>Inventaris</span></a></li>
 

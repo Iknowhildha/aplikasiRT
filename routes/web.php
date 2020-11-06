@@ -43,6 +43,8 @@ Route::resource('/inventaris', 'InventarisController');
 Route::resource('/keuangan', 'KeuanganController');
 //Route Crud surat Pengantar
 Route::resource('/suratpengantar', 'SuratpengantarController');
+//Route Crud Berita
+Route::resource('/berita', 'BeritaController');
 });
 
 //beranda warga
@@ -71,6 +73,10 @@ Route::resource('/inventaris', 'InventarisController');
 Route::resource('/suratpengantar', 'SuratpengantarController');
 //Route Crud Keuangan
 Route::resource('/keuangan', 'KeuanganController');
+//Route Crud Berita
+Route::resource('/berita', 'BeritaController');
+
+Route::post('/komentaradmin/{id}', 'KomentarController@komenadmin');
 
 Route::get('/warga1', function () {
     return view('admin.warga.warga');
