@@ -75,6 +75,7 @@ Route::resource('/suratpengantar', 'SuratpengantarController');
 Route::resource('/keuangan', 'KeuanganController');
 //Route Crud Berita
 Route::resource('/berita', 'BeritaController');
+Route::get('beritalist/{id}', 'BeritaController@listberitaku');
 
 Route::post('/komentaradmin/{id}', 'KomentarController@komenadmin');
 

@@ -69,11 +69,9 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
-                <div class="row">
 
                   @yield('content')
 
-                </div>
             </div>
         </section>
 

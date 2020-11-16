@@ -1,15 +1,15 @@
-@extends('layouts.master')
+@extends('layouts.master-warga')
 
 @section('title', 'Tambah Berita')
 
 @section('content')
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Tambah Berita</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Tambah Berita</h3>
     </div>
-    <!-- /.box-header -->
-    <div class="box-body">
+    <!-- /.card-header -->
+    <div class="card-body">
         <form role="form" action="{{ route('berita.store') }}" method="POST">
           @csrf
             <div class="form-group">
@@ -32,10 +32,10 @@
                 <label>Tanggal</label>
                 <input type="date" class="form-control" id="tanggal" name="tanggal">
               </div>
-            <button type="submit" class="btn bg-purple margin">Tambah</button>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Tambah</button>
           </form>
     </div>
-    <!-- /.box-body -->
+    <!-- /.card-body -->
 </div>
-<!-- /.box -->
+<!-- /.card -->
 @endsection

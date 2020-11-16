@@ -41,9 +41,10 @@ class BeritaController extends Controller
         if(!Session::get('login')){
             toastr()->warning('Kamu harus login terlebih dahulu.');
             return redirect('login');
-        }
-        else{
+        }elseif(Session::get('level') == 'Admin'){
             return view('admin.berita.tambah-berita');
+        }else{
+            return view('warga.berita.tambah-berita');
         }
     }
 
@@ -92,6 +93,17 @@ class BeritaController extends Controller
         }
     }
 
+    public function listberitaku($id)
+    {
+        if(!Session::get('login')){
+            toastr()->warning('Kamu harus login terlebih dahulu.');
+            return redirect('login');
+        }
+
+        $berita = Berita::where('user_id',$id)->paginate(10);
+        return view('warga.berita.list-berita', compact('berita'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -108,8 +120,8 @@ class BeritaController extends Controller
             $berita = Berita::findOrfail($id);
             return view('admin.berita.edit-berita', compact('berita'));
         }else{
-            $berita = berita::paginate(10);
-            return view('warga.berita.berita', compact('berita'));
+            $berita = berita::findOrfail($id);
+            return view('warga.berita.edit-berita', compact('berita'));
         }
     }
 
