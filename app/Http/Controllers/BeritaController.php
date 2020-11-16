@@ -25,8 +25,8 @@ class BeritaController extends Controller
             $berita = Berita::paginate(10);
             return view('admin.berita.berita', compact('berita'));
         }else{
-            $berita2 = berita::take(2);
-            $beritaall = berita::paginate(9);
+            $berita2 = Berita::take(2)->get();
+            $beritaall = Berita::paginate(9);
             return view('warga.berita.berita', compact('berita2','beritaall'));
         }
     }
@@ -86,8 +86,9 @@ class BeritaController extends Controller
             $komentar = Komentar::where('berita_id',$id)->get();
             return view('admin.berita.detail-berita', compact('berita','komentar'));
         }else{
-            $berita = berita::paginate(10);
-            return view('warga.berita.berita', compact('berita'));
+            $berita = Berita::findOrfail($id);
+            $komentar = Komentar::where('berita_id',$id)->get();
+            return view('warga.berita.detail-berita', compact('berita','komentar'));
         }
     }
 
