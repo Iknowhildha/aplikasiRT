@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Warga extends Model
 {
@@ -16,5 +17,7 @@ class Warga extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+
 
 }

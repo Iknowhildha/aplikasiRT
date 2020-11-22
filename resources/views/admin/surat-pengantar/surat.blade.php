@@ -3,7 +3,11 @@
 @section('title','Data surat')
 
 @section('content')
-<div class="col-md-12 col-sm-12">
+
+<div class="col-md-3 mb-3">
+    <a href="{{ url('formttd') }}" class="btn btn-primary btn-block">Upload Foto Tanda Tangan</a>
+</div>
+<div class="col-md-12 col-sm-12 mt-3">
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Data surat</h3>
@@ -49,7 +53,7 @@
                                     <button type="submit" 
                                       onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
                                       class="btn btn-danger btn-sm">Hapus</button>
-                                      <a href="{{ url('admin/suratpengantar/'.$data->id).'/cetak' }}"
+                                      <a href="{{ url('cetak', $data->id) }}"
                                         class="btn btn-default btn-sm">Cetak</a>
                               </form>
                     </td>

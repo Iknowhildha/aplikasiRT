@@ -7,6 +7,9 @@ use App\Suratpengantar;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use PDF;
+use App\Warga;
+use App\Ttd;
 
 class SuratpengantarController extends Controller
 {
@@ -155,5 +158,23 @@ class SuratpengantarController extends Controller
         $surat->delete();
         toastr()->success('Data Sukses Dihapus.');
         return redirect('suratpengantar');
+    }
+
+
+    public function cetak($id)
+    {
+        $datasurat = Suratpengantar::findOrfail($id);
+        $datauser = Warga::findOrfail($datasurat->user_id);
+        $datattd = Ttd::first();
+        $pdf = PDF::loadView('warga.surat-pengantar.cetak', array('surat' => $datasurat, 'user' => $datauser, 'ttd' => $datattd));
+
+        //Aktifkan Local File Access supaya bisa pakai file external ( cth File .CSS )
+        $pdf->setOption('enable-local-file-access', true);
+
+        // Stream untuk menampilkan tampilan PDF pada browser
+        return $pdf->stream('surat-pengantar.pdf');
+
+        // Jika ingin langsung download (tanpai melihat tampilannya terlebih dahulu) kalian bisa pakai fungsi download
+        // return $pdf->download('table.pdf);
     }
 }

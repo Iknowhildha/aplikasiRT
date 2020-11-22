@@ -24,6 +24,7 @@ class AgendaController extends Controller
             $agenda = Agenda::paginate(10);
             return view('admin.agenda.agenda', compact('agenda'));
         }else{
+
             $agenda = Agenda::paginate(10);
             return view('warga.agenda.agenda', compact('agenda'));
         }

@@ -30,7 +30,15 @@
                             <td>{{ $data->sumber }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>
-                                <a href="{{ route('berita.edit', $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil-o"></i> Edit</a>
+                                <form  action="{{ route('berita.destroy', $data->id) }}" id="delete" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <a href="{{ route('berita.edit', $data->id) }}"
+                                      class="btn btn-primary btn-sm">Edit</a>
+                                      <button type="submit" 
+                                        onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
+                                        class="btn btn-danger btn-sm">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Suratpengantar extends Model
 {
@@ -11,9 +12,11 @@ class Suratpengantar extends Model
     protected $fillable = [
         'nomor_surat', 'tanggal', 'status_perkawinan', 'pekerjaan','pelayanan','user_id','status'
     ];
+    
 
     public function user()
     {
         return $this->belongsTo('App\User');
     }
+
 }

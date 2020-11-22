@@ -3,6 +3,7 @@
 @section('title','Data surat')
 
 @section('content')
+
 <div class="col-md-12 col-sm-12">
     <a href="{{ route('suratpengantar.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Tambah</a><br><br>
 <div class="card">
@@ -33,7 +34,7 @@
                     <td>{{ $item->nik }}</td>
                     @endforeach
                     <td>{{ $data->nomor_surat }}</td>
-                    <td>{{ $data->tanggal }}</td>
+                    <td>{{ date('d-m-Y', strtotime($data->tanggal)) }}</td>
                     <td>{{ $data->status_perkawinan }}</td>
                     <td>{{ $data->pelayanan }}</td>
                     <td>{{ $data->pekerjaan }}</td>
@@ -54,7 +55,7 @@
                                       class="btn btn-danger btn-sm">Hapus</button>
                               </form>
                               @else
-                              <a href="{{ url('suratpengantar/'.$data->id).'/cetak' }}"
+                              <a href="{{ url('cetak', $data->id) }}"
                                 class="btn btn-info btn-sm">Cetak</a>
                                 @endif
                     </td>

@@ -76,8 +76,15 @@ Route::resource('/keuangan', 'KeuanganController');
 //Route Crud Berita
 Route::resource('/berita', 'BeritaController');
 Route::get('beritalist/{id}', 'BeritaController@listberitaku');
+Route::get('komentaredit/{id}', 'BeritaController@komentaredit');
+Route::get('komentarhapus/{id}', 'BeritaController@komentarhapus');
 
 Route::post('/komentaradmin/{id}', 'KomentarController@komenadmin');
+
+Route::get('formttd','TtdController@formttd');
+Route::post('simpanttd/{id}','TtdController@simpanttd');
+
+Route::get('cetak/{id}', 'SuratpengantarController@cetak');
 
 Route::get('/warga1', function () {
     return view('admin.warga.warga');

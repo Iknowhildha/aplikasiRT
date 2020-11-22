@@ -161,4 +161,22 @@ class BeritaController extends Controller
         toastr()->success('Data Sukses Dihapus.');
         return redirect::to('admin/berita');
     }
+
+    public function komentaredit(Request $request, $id)
+    {
+        $komentar = Komentar::where('id', $id)->firstOrFail();
+        $komentar->isi_komentar = $request->komentar;
+        $komentar->update();
+        toastr()->success('Data komentar berhasil diedit');
+        return redirect()->back();
+
+    }
+
+    public function komentarhapus($id)
+    {
+        $komentar = Komentar::findOrfail($id);
+        $komentar->delete();
+        toastr()->success('Data Sukses Dihapus.');
+        return redirect()->back();
+    }
 }
