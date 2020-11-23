@@ -10,7 +10,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <form role="form" action="{{ route('') }}" method="POST">
+        <form role="form" action="{{ url('admin/simpanuser') }}" method="POST">
           @csrf
           <div class="form-group">
             <label for="">Username</label>
@@ -49,14 +49,6 @@
             <input id="no_hp" type="number" class="form-control" name="no_hp" placeholder="Nomor HP" >
             
         </div>
-        <div class="form-group">
-          <label for="">Level</label>
-          <select id="level" class="form-control" name="level">
-              <option value="">-- Pilih Level --</option>
-              <option>Admin</option>
-              <option>Warga</option>
-          </select>
-      </div>
             <button type="submit" class="btn bg-purple margin">Tambah</button>
           </form>
     </div>

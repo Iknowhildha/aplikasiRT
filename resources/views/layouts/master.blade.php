@@ -111,7 +111,6 @@
         <li ><a href="{{ url('admin/berita') }}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li ><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> <span>Data User</span></a></li>
         <li ><a href="{{ url('admin/inventaris') }}"><i class="fa fa-user"></i> <span>Inventaris</span></a></li>
-
       </ul>
     </section>
     <!-- /.sidebar -->

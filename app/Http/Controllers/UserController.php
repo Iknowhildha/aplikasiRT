@@ -187,4 +187,86 @@ class UserController extends Controller
         toastr()->success('Data Sukses Dihapus.');
         return redirect::to('admin/warga');
     }
+
+    public function user(){
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }
+        $user = User::where('level','Admin')->paginate(10);
+        return view('admin.user.user',  compact('user'));
+    }
+
+    public function tambahuser(){
+        if(!Session::get('login')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }
+        return view('admin.user.tambah-user');
+    }
+
+    public function simpanuser(Request $request)
+    {
+        $user =  User::create([
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'level' => "Admin",
+        ]);
+
+        Warga::create([
+            'no_kk' => null,
+            'nik' => null,
+            'nama' => $request['nama'],
+            'tempat_lahir' => null,
+            'tanggal_lahir' => null,
+            'agama' => "-",
+            'jenis_kelamin' => $request['jenis_kelamin'],
+            'no_hp' => $request['no_hp'],
+
+            'user_id' => $user->id
+        ]);
+        toastr()->success('Data berhasil disimpan.');
+        return redirect::to('admin/user');
+    }
+
+    public function edituser($id){
+        $warga = Warga::where('user_id', $id)->firstOrFail();
+        $user = User::where('id', $id)->firstOrFail();
+        return view('admin.user.edit-user', compact('warga','user'));
+    }
+
+    public function updateuser(Request $request, $id)
+    {
+        $warga = Warga::where('user_id', $id)->firstOrFail();
+        $warga->nama = $request->nama;
+        $warga->jenis_kelamin = $request->jenis_kelamin;
+        $warga->no_hp = $request->no_hp;
+        $warga->update();
+
+        if ($request->password != null) {
+            $user = User::where('id',$id)->firstOrFail();
+            $user->username = $request->username;
+            $user->password =  Hash::make($request->password);
+            $user->email = $request->email;
+            $user->update();
+        }else{
+            $user = User::where('id',$id)->firstOrFail();
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->update();
+        }
+
+    
+
+       
+        toastr()->success('Data berhasil diupdate.');
+        return redirect::to('admin/user');
+    }
+
+    
+    public function deleteuser($id) {
+        $warga = User::findOrfail($id);
+        $warga->delete();
+        toastr()->success('Data Sukses Dihapus.');
+        return redirect::to('admin/user');
+    }
 }

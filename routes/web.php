@@ -33,6 +33,14 @@ Route::get('/editProfile/{id}', 'UserController@editProfil');
 Route::get('/detail/{id}', 'UserController@detail');
 Route::patch('/updateProfil/{id}', 'UserController@updateProfil');
 Route::get('/deleteWarga/{id}', 'UserController@deleteWarga');
+// Route Data User Sisi Admin
+Route::get('/user', 'UserController@user');
+Route::get('/tambahuser', 'UserController@tambahuser');
+Route::post('/simpanuser', 'UserController@simpanuser');
+Route::get('/edituser/{id}', 'UserController@edituser');
+Route::get('/detailuser/{id}', 'UserController@detailuser');
+Route::post('/updateuser/{id}', 'UserController@updateuser');
+Route::get('/deleteuser/{id}', 'UserController@deleteuser');
 //Route validasi status
 Route::get('/validasi/{id}', 'UserController@validasi');
 //Route Crud Agenda
@@ -50,7 +58,7 @@ Route::resource('/berita', 'BeritaController');
 //beranda warga
 Route::get('/beranda', 'WargaController@beranda');
 
-// Route Data Warga
+//Route Data Warga
 Route::get('/warga', 'WargaController@warga');
 Route::get('/editProfile/{id}', 'WargaController@editProfil');
 Route::get('/detail/{id}', 'WargaController@detail');
@@ -89,8 +97,3 @@ Route::get('cetak/{id}', 'SuratpengantarController@cetak');
 Route::get('/warga1', function () {
     return view('admin.warga.warga');
 });
-
-
-
-//Route Crud
-Route::resource('/orang', 'OrangController');
