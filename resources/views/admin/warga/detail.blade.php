@@ -64,7 +64,7 @@
             </div>
             <!-- /.box-body -->
 
-            <a href="{{ url('warga') }}" class="btn bg-purple margin">Kembali</a>
+            <a href="{{ url('admin/warga') }}" class="btn bg-purple margin">Kembali</a>
            
           </div>
           <!-- /.box -->

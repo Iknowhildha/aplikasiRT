@@ -89,3 +89,8 @@ Route::get('cetak/{id}', 'SuratpengantarController@cetak');
 Route::get('/warga1', function () {
     return view('admin.warga.warga');
 });
+
+
+
+//Route Crud
+Route::resource('/orang', 'OrangController');
