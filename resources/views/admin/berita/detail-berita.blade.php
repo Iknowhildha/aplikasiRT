@@ -45,6 +45,24 @@
                     <span class="text-muted pull-right">{{ $item->created_at }}</span>
                   </span><!-- /.username -->
               {{ $item->isi_komentar }}
+              @if ($item->user_id == Session::get('id'))
+              <a class="badge badge-primary" data-toggle="collapse" href="#komen{{ $item->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Edit
+              </a>
+              <a href="{{ url('komentarhapus', $item->id) }}" class="badge badge-danger">Hapus</a>
+              <div class="collapse" id="komen{{ $item->id }}">
+                  <div class="card card-body">
+                    <form action="{{ url('komentaredit', $item->id) }}">
+                      <div class="input-group">
+                        <input type="text" name="komentar" placeholder="Edit Message ..." class="form-control">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-info btn-flat">Edit</button>
+                        </span>
+                    </div>
+                    </form>
+                  </div>
+              </div>
+              @endif
             </div>
             <!-- /.comment-text -->
           </div>

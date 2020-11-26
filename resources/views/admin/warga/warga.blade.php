@@ -37,7 +37,7 @@
                               class="btn bg-purple margin btn-xs">Details</a>
                               <a href="{{ url('admin/deleteWarga', $data->user_id) }}"
                                   onclick="return confirm('Apakah kamu yakin ingin menghapus ?')"
-                                  class="btn bg-purple margin btn-xs">Validasi</a>
+                                  class="btn bg-purple margin btn-xs">Hapus</a>
                               <a href="{{ url('admin/validasi', $data->user_id) }}" class="btn bg-purple margin btn-xs">Validasi</a>
                               @else
                               <a href="{{ url('admin/detail', $data->user_id) }}"
