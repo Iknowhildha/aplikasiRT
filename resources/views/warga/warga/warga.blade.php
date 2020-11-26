@@ -29,7 +29,7 @@
                     <td>******</td>
                     <td>******</td>
                     <td>{{ $data->nama }}</td>
-                    <td>{{ $data->tanggal_lahir }}</td>
+                    <td>**/**/****</td>
                     <td>{{ $data->jenis_kelamin }}</td>
                     <td>{{ $data->no_hp }}</td>
                     <td>

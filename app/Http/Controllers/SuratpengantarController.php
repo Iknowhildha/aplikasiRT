@@ -48,7 +48,7 @@ class SuratpengantarController extends Controller
             // karna array dimulai dari 0 maka kita tambah di awal data kosong
             // bisa juga mulai dari "1"=>"I"
             $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
-            $noUrutAkhir = \App\Suratpengantar::max('nomor_surat');
+            $noUrutAkhir = \App\Suratpengantar::max('id');
             $no = 1;
             if($noUrutAkhir) {
                 $nomorotomatis =  sprintf("%03s", abs($noUrutAkhir + 1)). '/' . $AWAL .'/' . $bulanRomawi[date('n')] .'/' . date('Y');

@@ -110,7 +110,7 @@
         <td align="justify" style="text-indent: 39px;">
             Benar-benar warga RT. 42 RW 06 Kelurahan Bardar Lor Kecamatan Mojoroto Kota<br>
             Kediri dan selama berada dilingkungan RT. 42 RW 06 berkelakuan baik. Selanjutnya yang<br>
-            bersangkutan tersebut diatas, mohon pelayanan ......................</td>
+            bersangkutan tersebut diatas, mohon pelayanan {{ $surat->pelayanan }}</td>
     </tr>
     <tr>
         <td height="50">

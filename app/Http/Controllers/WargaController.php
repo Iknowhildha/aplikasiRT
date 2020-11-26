@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Warga;
+use DB;
 
 class WargaController extends Controller
 {
@@ -19,11 +20,19 @@ class WargaController extends Controller
         }
     }
 
-    public function warga() {
+    public function warga1() {
         $warga = Warga::where('status','Confirmed')->paginate(10);
         return view('warga.warga.warga', compact('warga'));
         }
 
+    public function warga() {
+        $warga = DB::table('warga')
+        ->leftJoin('users', 'warga.user_id', '=', 'users.id')
+        ->where('users.level','Warga')
+        ->orderBy('users.id', 'DESC')
+        ->paginate(10);
+        return view('warga.warga.warga', compact('warga'));
+        }
         public function detailProfil($id) {
             $warga = Warga::where('user_id', $id)->firstOrFail();
             return view('warga.warga.detailprofil', compact('warga'));

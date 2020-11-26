@@ -32,7 +32,7 @@
 
                         <strong><i class="fa fa-calendar margin-r-5"></i> Tempat Tanggal Lahir</strong>
 
-                        <p class="text-muted">{{ $warga->tempat_lahir }} {{ $warga->tanggal_lahir}}</p>
+                        <p class="text-muted">***** **/**/***</p>
                     </div>
 
                     <div class="col-md-6">
@@ -47,12 +47,12 @@
 
                         <hr>
 
-                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Nomor HP</strong>
+                        <strong><i class="fa fa-map-marker margin-r-5"></i> Nomor HP</strong>
 
                         <p>{{ $warga->no_hp }}</p>
                         <hr>
 
-                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Alamat Lengkap</strong>
+                        <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat Lengkap</strong>
 
                         <p>{{ $warga->alamat }}</p>
                     </div>
