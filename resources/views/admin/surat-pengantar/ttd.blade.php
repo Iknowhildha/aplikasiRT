@@ -23,12 +23,20 @@
               <div class="form-group">
                 <img src="{{ asset("/img/foto/".$data->foto) }}" width="100" height="100" alt="" srcset="">
               </div>
-  
+              <div class="form-group">
+                <label>Foto Stempel</label>
+                <input type="file" class="form-control" name="filestempel">
+              </div>
+              <div class="form-group">
+                <img src="{{ asset("/img/foto/".$data->stempel) }}" width="100" height="100" alt="" srcset="">
+              </div>
+
           <button type="submit" class="btn btn-success btn-block">Update</button>
         </form>
-  </div>
+
   <!-- /.box-body -->
 </div>
 <!-- /.box -->
+</div>
 </div>
 @endsection

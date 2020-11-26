@@ -136,7 +136,7 @@
     <tr>
         <td height="70"></td>
         <td height="70">
-            <center>                <img src="{{ public_path("/img/foto/stempel.png") }}" width="150" height="150" alt="" srcset="" style="position: absolute; padding-left:50px;">
+            <center>                <img src="{{ public_path("/img/foto/".$ttd->stempel) }}" width="150" height="150" alt="" srcset="" style="position: absolute; padding-left:50px;">
                 <img src="{{ public_path("/img/foto/".$ttd->foto) }}" width="100" height="100"></center>
         </td>
     </tr>

@@ -19,13 +19,21 @@ class TtdController extends Controller
 		$ttd = Ttd::findOrFail($id);
 		$ttd->nama = $request->nama;
 		$image = $request->file('file');
+		$imagestem = $request->file('filestempel');
 		if ($image) {
 			$image_name = date('dmy_H_s_i');
 			$ext = strtolower($image->getClientOriginalExtension());
-			$imagefull = $image_name.'.'.$ext;
+			$imagettd = $image_name.'.'.$ext;
 			$lokasi = 'img/foto/';
-			$success = $image->move($lokasi,$imagefull);
-			$ttd->foto = $imagefull;			
+			$success = $image->move($lokasi,$imagettd);
+			$ttd->foto = $imagettd;
+		}elseif($imagestem){
+			$image_name = date('dmy_H_s_i');
+			$ext = strtolower($imagestem->getClientOriginalExtension());
+			$imagestempel = $image_name.'.'.$ext;
+			$lokasi = 'img/foto/';
+			$success = $imagestem->move($lokasi,$imagestempel);
+			$ttd->stempel = $imagestempel;
 		}
 		$ttd->user_id = Session::get('id');
         $ttd->update();

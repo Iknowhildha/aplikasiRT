@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use DB;
 use App\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -133,7 +134,11 @@ class UserController extends Controller
     }
 
     public function warga() {
-    $warga = Warga::paginate(10);
+        $warga = DB::table('warga')
+        ->leftJoin('users', 'warga.user_id', '=', 'users.id')
+        ->where('users.level','Warga')
+        ->orderBy('users.id', 'DESC')
+        ->paginate(10);
     return view('admin.warga.warga', compact('warga'));
     }
 
