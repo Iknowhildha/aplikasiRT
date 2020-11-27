@@ -33,6 +33,17 @@
               <label>Nominal</label>
               <input type="number" class="form-control"  name="nominal" @if($keuangan->uang_masuk != 0) value="{{ $keuangan->uang_masuk }}" @else value="{{ $keuangan->uang_keluar }}" @endif value="">
             </div>
+            <div class="form-group">
+              <label>Penanggung Jawab</label>
+              <select name="tanggung" class="form-control">
+                <option value="">-- Pilih Penanggung Jawab --</option>
+                @foreach ($user as $item)
+                <option value="{{ $keuangan->id }}" @if ($keuangan->user_id == $item->id)
+                    Selected
+                @endif>{{ $item->nama }}</option>
+                @endforeach
+              </select>
+            </div>
           <button type="submit" class="btn bg-purple margin">Update</button>
         </form>
   </div>

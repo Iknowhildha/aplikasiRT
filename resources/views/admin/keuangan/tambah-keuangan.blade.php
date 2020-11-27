@@ -32,6 +32,15 @@
               <label>Nominal</label>
               <input type="number" class="form-control"  name="nominal">
             </div>
+            <div class="form-group">
+              <label>Penanggung Jawab</label>
+              <select name="tanggung" class="form-control">
+                <option value="">-- Pilih Penanggung Jawab --</option>
+                @foreach ($user as $item)
+                <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                @endforeach
+              </select>
+            </div>
           <button type="submit" class="btn bg-purple margin">Tambah</button>
         </form>
   </div>

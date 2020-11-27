@@ -17,6 +17,8 @@ class CreateKeuanganTable extends Migration
             $table->id();
             $table->date('tanggal_keuangan');
             $table->text('uraian');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('uang_masuk')->nullable();
             $table->integer('uang_keluar')->nullable();
             $table->timestamps();

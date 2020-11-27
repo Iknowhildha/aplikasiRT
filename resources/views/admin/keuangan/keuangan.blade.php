@@ -21,6 +21,7 @@
                     <th>Uraian</th>
                     <th>Uang Masuk</th>
                     <th>Uang Keluar</th>
+                    <th>Nama</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                     <td>{{ $data->uraian }}</td>
                     <td>{{ $data->uang_masuk }}</td>
                     <td>{{ $data->uang_keluar }}</td>
+                    @foreach ($data->user->warga as $item)
+                    <td>{{ $item->nama }}</td>
+                    @endforeach
                     <td>
                       @if (Session::get('level') == "Warga")
                       <a href="{{ url('admin/keuangan/show', $data->id) }}" class="btn bg-purple margin btn-xs">Detail</a>

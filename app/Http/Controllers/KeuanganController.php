@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Keuangan;
+use App\Warga;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use DB;
@@ -42,7 +43,8 @@ class KeuanganController extends Controller
             return redirect('login');
         }
         else{
-            return view('admin.keuangan.tambah-keuangan');
+            $user = Warga::all();
+            return view('admin.keuangan.tambah-keuangan', compact('user'));
         }
     }
 
@@ -59,6 +61,7 @@ class KeuanganController extends Controller
             Keuangan::create([
                 'tanggal_keuangan' => $request['tanggal'],
                 'uraian' => $request['uraian'],
+                'user_id' => $request['tanggung'],
                 'uang_masuk' => $request['nominal'],
                 'uang_keluar' => 0,
             ]);
@@ -66,6 +69,7 @@ class KeuanganController extends Controller
             Keuangan::create([
                 'tanggal_keuangan' => $request['tanggal'],
                 'uraian' => $request['uraian'],
+                'user_id' => $request['tanggung'],
                 'uang_masuk' => 0,
                 'uang_keluar' => $request['nominal'],
             ]);
@@ -97,7 +101,8 @@ class KeuanganController extends Controller
     public function edit($id)
     {
         $keuangan = Keuangan::where('id', $id)->firstOrFail();
-        return view('admin.keuangan.edit-keuangan', compact('keuangan'));
+        $user = Warga::all();
+        return view('admin.keuangan.edit-keuangan', compact('keuangan','user'));
     }
 
     /**
@@ -114,6 +119,7 @@ class KeuanganController extends Controller
             $keuangan->tanggal_keuangan = $request->tanggal;
             $keuangan->uraian = $request->uraian;
             $keuangan->uang_masuk = $request->nominal;
+            $keuangan->user_id = $request->tanggung;
             $keuangan->uang_keluar = 0;
             $keuangan->update();
             toastr()->success('Data Keuangan berhasil diedit');
@@ -122,6 +128,7 @@ class KeuanganController extends Controller
             $keuangan->tanggal_keuangan = $request->tanggal;
             $keuangan->uraian = $request->uraian;
             $keuangan->uang_keluar = $request->nominal;
+            $keuangan->user_id = $request->tanggung;
             $keuangan->uang_masuk = 0;
             $keuangan->update();
             toastr()->success('Data Keuangan berhasil diedit');
