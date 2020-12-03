@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard warga Warga')
+@section('title', 'Dashboard Profil')
 
 @section('content')
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Form Edit Data Warga</h3>
+              <h3 class="box-title">Form Edit Profile</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="{{ url ('/updateProfil', $warga->user_id) }}" method="POST">
+              <form role="form" action="{{ url ('admin/updateProfil', $warga->user_id) }}" method="POST">
                 {{ csrf_field() }}
                 @method('patch')
                 <!-- text input -->

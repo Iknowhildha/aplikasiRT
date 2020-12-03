@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard inventaris')
+@section('title', 'Inventaris')
 
 @section('content')
 
@@ -9,7 +9,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Data Warga</h3>
+        <h3 class="box-title">Data Inventaris</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -18,9 +18,9 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Isi</th>
-                    <th>Tanggal</th>
-                    <th>Tempat</th>
+                    <th>Jumlah</th>
+                    <th>Santuan</th>
+                    <th>Tanggal Beli</th>
                     <th>Keterangan</th>
                     <th>Action</th>
                 </tr>
@@ -60,11 +60,12 @@
             </tbody>
             <tfoot>
                 <tr>
-                  <th>No</th>
+                  <tr>
+                    <th>No</th>
                     <th>Nama</th>
-                    <th>Isi</th>
-                    <th>Tanggal</th>
-                    <th>Tempat</th>
+                    <th>Jumlah</th>
+                    <th>Santuan</th>
+                    <th>Tanggal Beli</th>
                     <th>Keterangan</th>
                     <th>Action</th>
                 </tr>

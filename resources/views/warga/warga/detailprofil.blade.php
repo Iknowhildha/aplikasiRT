@@ -64,7 +64,7 @@
         <!-- /.card-body -->
 
         <a href="{{ url('warga') }}" class="btn bg-purple margin">Kembali</a>
-        <a href="{{ url('editProfile', $warga->user_id) }}" class="btn bg-purple margin">Edit</a>
+        <a href="{{ url('editProfileWarga', $warga->user_id) }}" class="btn bg-purple margin">Edit</a>
     </div>
     <!-- /.card -->
 </div>

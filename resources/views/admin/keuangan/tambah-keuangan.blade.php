@@ -17,7 +17,7 @@
               <input type="date" class="form-control" name="tanggal">
             </div>
             <div class="form-group">
-              <label>uraian</label>
+              <label>Uraian</label>
               <textarea name="uraian" id="" class="form-control" cols="30" rows="2"></textarea>
             </div>
             <div class="form-group">

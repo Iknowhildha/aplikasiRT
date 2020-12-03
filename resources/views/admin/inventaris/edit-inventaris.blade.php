@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" id="nama" name="nama" value="{{ $inventaris->nama_inventaris }}">
               </div>
               <div class="form-group">
-                <label>jumlah</label>
+                <label>Jumlah</label>
                 <input type="text" class="form-control" id="jumlah" name="jumlah" value="{{ $inventaris->jumlah }}">
               </div>
               <div class="form-group">
@@ -31,7 +31,7 @@
                 </select>              
               </div>
               <div class="form-group">
-                <label>tanggal_beli</label>
+                <label>Tanggal Beli</label>
                 <input type="text" class="form-control" id="tanggal_beli" name="tanggal_beli" value="{{ $inventaris->tanggal_beli}}">
               </div>
             <!-- textarea -->

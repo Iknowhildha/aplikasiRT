@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Upload Foto Tanda Tanga')
+@section('title', 'Upload Foto Tanda Tangan')
 
 @section('content')
 <div class="col-md-12 col-sm-12">

@@ -17,7 +17,7 @@
               <input type="text" class="form-control" id="nama" name="nama">
             </div>
             <div class="form-group">
-              <label>jumlah</label>
+              <label>Jumlah</label>
               <input type="text" class="form-control" id="jumlah" name="jumlah">
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
               </select>              
             </div>
             <div class="form-group">
-              <label>tanggal_beli</label>
+              <label>Tanggal Beli</label>
               <input type="date" class="form-control" id="tanggal_beli" name="tanggal_beli">
             </div>
           <!-- textarea -->

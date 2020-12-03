@@ -173,7 +173,7 @@ class UserController extends Controller
         $warga->alamat = $request->alamat;
         $warga->update();
 
-        return view('admin.warga.detail', compact('warga'));
+        return redirect::to('detailprofil/'.$id);
         
     }
 

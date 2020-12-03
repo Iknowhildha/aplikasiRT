@@ -6,7 +6,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Detail inventaris</h3>
+        <h3 class="box-title">Detail Inventaris</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -16,15 +16,15 @@
                 <input type="text" class="form-control" id="nama" name="nama" disabled value="{{ $inventaris->nama_inventaris }}">
               </div>
               <div class="form-group">
-                <label>jumlah</label>
+                <label>Jumlah</label>
                 <input type="text" class="form-control" id="jumlah" name="jumlah" disabled value="{{ $inventaris->jumlah_inventaris }}">
               </div>
               <div class="form-group">
-                <label>satuan </label>
+                <label>Satuan </label>
                 <input type="text" class="form-control" id="satuan" name="satuan" disabled value="{{ $inventaris->satuan_inventaris }}">
               </div>
               <div class="form-group">
-                <label>tanggal beli</label>
+                <label>Tanggal Beli</label>
                 <input type="text" class="form-control" id="tanggal_beli" name="tanggal_beli" disabled value="{{ $inventaris->tanggal_beli_inventaris }}">
               </div>
             <!-- textarea -->

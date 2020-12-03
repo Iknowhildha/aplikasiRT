@@ -18,7 +18,7 @@
               <input type="date" class="form-control" name="tanggal" value="{{ $keuangan->tanggal_keuangan }}">
             </div>
             <div class="form-group">
-              <label>uraian</label>
+              <label>Uraian</label>
               <textarea name="uraian" id="" class="form-control" cols="30" rows="2">{{ $keuangan->uraian }}</textarea>
             </div>
             <div class="form-group">

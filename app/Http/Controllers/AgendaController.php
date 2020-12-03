@@ -54,6 +54,15 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $this->validate($request, [
+        //     'nama_agenda' => ['required', 'string', 'max:255'],
+        //     'isi_agenda' => ['required', 'string'],
+        //     'tanggal_agenda' => ['required', 'date'],
+        //     'tempat_agenda' => ['required', 'string'],
+        //     'keterangan_agenda' => ['required', 'string']
+        // ]);
+
         Agenda::create([
             'nama_agenda' => $request['nama'],
             'isi_agenda' => $request['isi'],

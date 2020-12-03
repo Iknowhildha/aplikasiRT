@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard Agenda')
+@section('title', 'Agenda')
 
 @section('content')
 
@@ -9,7 +9,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Data Warga</h3>
+        <h3 class="box-title">Data Agenda</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">

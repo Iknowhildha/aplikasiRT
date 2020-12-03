@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard Data Warga')
+@section('title', 'Data Warga')
 
 @section('content')
 <div class="box">
