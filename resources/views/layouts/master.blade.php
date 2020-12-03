@@ -14,13 +14,8 @@
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
-  <!-- fullCalendar -->
-  <link rel="stylesheet" href="{{ asset('adminlte/bower_components/fullcalendar/dist/fullcalendar.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminlte/bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}" media="print">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
-      <!-- iCheck -->
-      <link rel="stylesheet" href="{{ asset('adminlte/plugins/iCheck/square/blue.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/_all-skins.min.css') }}">
@@ -155,11 +150,11 @@
 
 <!-- jQuery 3 -->
 <script src="{{ asset('adminlte/bower_components/jquery/dist/jquery.min.js') }}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- DataTables -->
 <script src="{{ asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
@@ -174,9 +169,13 @@
   })
 </script>
 <!-- page script -->
+
+@toastr_js
+@toastr_render
 <script>
   $(function () {
     $('#example1').DataTable()
+    $('#example13').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
@@ -188,7 +187,5 @@
   })
 </script>
 </body>
-@jquery
-@toastr_js
-@toastr_render
+
 </html>

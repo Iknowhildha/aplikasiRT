@@ -20,14 +20,25 @@ class TtdController extends Controller
 		$ttd->nama = $request->nama;
 		$image = $request->file('file');
 		$imagestem = $request->file('filestempel');
-		if ($image) {
+		if($image != null && $imagestem != null){
+			$image_name = date('dmy_H_s_i');
+			$ext1 = strtolower($image->getClientOriginalExtension());
+			$imagettd = $image_name.'.'.$ext1;
+			$lokasi = 'img/foto/';
+			$success1 = $image->move($lokasi,$imagettd);
+			$ttd->foto = $imagettd;
+			$ext2 = strtolower($imagestem->getClientOriginalExtension());
+			$imagestempel = $image_name.'.'.$ext2;
+			$success2 = $imagestem->move($lokasi,$imagestempel);
+			$ttd->stempel = $imagestempel;
+		}elseif($image != null) {
 			$image_name = date('dmy_H_s_i');
 			$ext = strtolower($image->getClientOriginalExtension());
 			$imagettd = $image_name.'.'.$ext;
 			$lokasi = 'img/foto/';
 			$success = $image->move($lokasi,$imagettd);
 			$ttd->foto = $imagettd;
-		}elseif($imagestem){
+		}elseif($imagestem != null){
 			$image_name = date('dmy_H_s_i');
 			$ext = strtolower($imagestem->getClientOriginalExtension());
 			$imagestempel = $image_name.'.'.$ext;

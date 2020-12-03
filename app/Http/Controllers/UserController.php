@@ -224,9 +224,13 @@ class UserController extends Controller
             'tempat_lahir' => null,
             'tanggal_lahir' => null,
             'agama' => "-",
+            'alamat' => "-",
+            'kelurahan' => "-",
+            "kecamatan" => "-",
+            "kota" => "-",
             'jenis_kelamin' => $request['jenis_kelamin'],
             'no_hp' => $request['no_hp'],
-
+            'status' => 'Confirmed',
             'user_id' => $user->id
         ]);
         toastr()->success('Data berhasil disimpan.');

@@ -9,7 +9,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example13" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Nomer KK</th>
@@ -50,7 +50,7 @@
                 </tr>
                 @endforeach
                 @else
-                <td class="text-center bg-danger" colspan="4">Data Tidak Ditemukan</td>
+                <td class="text-center bg-danger" colspan="7">Data Tidak Ditemukan</td>
                 @endif
             </tbody>
             <tfoot>

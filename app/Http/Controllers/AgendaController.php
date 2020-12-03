@@ -54,14 +54,22 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
 
-        // $this->validate($request, [
-        //     'nama_agenda' => ['required', 'string', 'max:255'],
-        //     'isi_agenda' => ['required', 'string'],
-        //     'tanggal_agenda' => ['required', 'date'],
-        //     'tempat_agenda' => ['required', 'string'],
-        //     'keterangan_agenda' => ['required', 'string']
-        // ]);
+        $this->validate($request, [
+            'nama' => ['required', 'string', 'max:255'],
+            'isi' => ['required', 'string'],
+            'tanggal' => ['required', 'date'],
+            'tempat' => ['required', 'string'],
+            'keterangan' => ['required', 'string']
+        ],
+        [
+            'nama.required' => 'kolom nama harus diisi',
+            'isi.required' => 'kolom isi harus diisi'
+        ]
+    );
 
         Agenda::create([
             'nama_agenda' => $request['nama'],
