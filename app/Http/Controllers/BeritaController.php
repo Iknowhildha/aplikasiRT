@@ -56,6 +56,26 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+
+        $this->validate($request, [
+            'judul' => ['required', 'string', 'max:255'],
+            'headline' => ['required', 'string'],
+            'isi' => ['required', 'string'],
+            'tanggal' => ['required', 'date'],
+            'sumber' => ['required', 'string']
+        ],
+        [
+            'judul.required' => 'kolom judul tidak boleh kosong',
+            'headline.required' => 'kolom headline tidak boleh kosong',
+            'isi.required' => 'kolom isi tidak boleh kosong',
+            'tanggal.required' => 'kolom tanggal tidak boleh kosong',
+            'sumber.required' => 'kolom sumber tidak boleh kosong',
+        ]
+    );   
         Berita::create([
             'judul' => $request['judul'],
             'headline' => $request['headline'],
@@ -144,7 +164,8 @@ class BeritaController extends Controller
 
         $berita->update();
         toastr()->success('Data berita berhasil diedit');
-        return redirect()->back();
+        //return redirect()->back();
+        return redirect::to('admin/berita');
 
     }
 

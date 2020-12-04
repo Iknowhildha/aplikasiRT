@@ -56,6 +56,28 @@ class KeuanganController extends Controller
      */
     public function store(Request $request)
     {
+
+    //     $customMessages = [
+    //         'required' => 'The :attribute field is required.'
+    //     ];
+
+    //     $this->validate($request, [
+    //         'kategori' => ['required', 'string'],
+    //         'nominal' => ['required', 'numeric'],
+    //         'uraian' => ['required', 'string'],
+    //         'tanggal' => ['required', 'date'],
+            
+    //         'jenis' => ['required', 'string']
+    //     ],
+    //     [
+    //         'kategori.required' => 'kolom kategori tidak boleh kosong',
+    //         'nominal.required' => 'kolom nominal tidak boleh kosong',
+    //         'uraian.required' => 'kolom uraian tidak boleh kosong',
+    //         'tanggal.required' => 'kolom tanggal tidak boleh kosong',
+            
+    //         'jenis.required' => 'kolom jenis tidak boleh kosong'
+    //     ]
+    // );  
  
         if($request['jenis'] == 'uangmasuk'){
             Keuangan::create([

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Update Keuangan')
+@section('title', 'Edit Keuangan')
 
 @section('content')
 

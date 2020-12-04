@@ -66,8 +66,11 @@ class AgendaController extends Controller
             'keterangan' => ['required', 'string']
         ],
         [
-            'nama.required' => 'kolom nama harus diisi',
-            'isi.required' => 'kolom isi harus diisi'
+            'nama.required' => 'kolom nama tidak boleh kosong',
+            'isi.required' => 'kolom isi tidak boleh kosong',
+            'tanggal.required' => 'kolom tanggal tidak boleh kosong',
+            'tempat.required' => 'kolom tempat tidak boleh kosong',
+            'keterangan.required' => 'kolom keterangan tidak boleh kosong',
         ]
     );
 

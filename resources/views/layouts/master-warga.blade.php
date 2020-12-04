@@ -28,7 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('warga') }}">Data warga</a></li>
+                       <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('warga') }}">Data warga</a></li> -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('suratpengantar') }}">Surat Pengantar</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('agenda') }}">Agenda</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{{ url('berita') }}">Berita</a></li>

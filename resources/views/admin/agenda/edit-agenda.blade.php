@@ -6,7 +6,7 @@
 
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Detail Agenda</h3>
+        <h3 class="box-title">Edit Agenda</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -34,7 +34,7 @@
               <label>Keterangan</label>
               <textarea class="form-control" rows="3" id="keterangan" name="keterangan"> {{ $agenda->keterangan_agenda }}</textarea>
             </div>
-            <button type="submit" class="btn bg-purple margin">Edit</button>
+            <button type="submit" class="btn bg-purple margin">Update</button>
           </form>
     </div>
     <!-- /.box-body -->

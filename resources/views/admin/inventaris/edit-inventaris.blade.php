@@ -32,14 +32,14 @@
               </div>
               <div class="form-group">
                 <label>Tanggal Beli</label>
-                <input type="text" class="form-control" id="tanggal_beli" name="tanggal_beli" value="{{ $inventaris->tanggal_beli}}">
+                <input type="date" class="form-control" id="tanggal_beli" name="tanggal_beli" value="{{ $inventaris->tanggal_beli}}">
               </div>
             <!-- textarea -->
             <div class="form-group">
               <label>Keterangan</label>
               <textarea class="form-control" rows="3" id="keterangan" name="keterangan"> {{ $inventaris->keterangan_inventaris }}</textarea>
             </div>
-            <button type="submit" class="btn bg-purple margin">Edit</button>
+            <button type="submit" class="btn bg-purple margin">Update</button>
           </form>
     </div>
     <!-- /.box-body -->

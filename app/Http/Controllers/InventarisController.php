@@ -53,6 +53,28 @@ class InventarisController extends Controller
      */
     public function store(Request $request)
     {
+
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+
+        $this->validate($request, [
+            'nama' => ['required', 'string', 'max:255'],
+            'jumlah' => ['required', 'numeric'],
+            'satuan' => ['required', 'string'],
+            'tanggal_beli' => ['required', 'date'],
+            'keterangan' => ['required', 'string']
+        ],
+        [
+            'nama.required' => 'kolom nama tidak boleh kosong',
+            'nama.numeric' => 'inputan harus berupa angka',
+            'jumlah.required' => 'kolom jumlah tidak boleh kosong',
+            'satuan.required' => 'kolom satuan tidak boleh kosong',
+            'tanggal_beli.required' => 'kolom tanggal beli tidak boleh kosong',
+            'keterangan.required' => 'kolom keterangan tidak boleh kosong',
+        ]
+    );
+
         Inventaris::create([
             'nama_inventaris' => $request['nama'],
             'jumlah' => $request['jumlah'],

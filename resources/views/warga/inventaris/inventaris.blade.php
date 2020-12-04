@@ -15,9 +15,9 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Isi</th>
-                    <th>Tanggal</th>
-                    <th>Tempat</th>
+                    <th>Jumlah</th>
+                    <th>Satuan</th>
+                    <th>Tanggal Beli</th>
                     <th>Keterangan</th>
                     <th>Action</th>
                 </tr>
@@ -43,11 +43,11 @@
             </tbody>
             <tfoot>
                 <tr>
-                  <th>No</th>
+                    <th>No</th>
                     <th>Nama</th>
-                    <th>Isi</th>
-                    <th>Tanggal</th>
-                    <th>Tempat</th>
+                    <th>Jumlah</th>
+                    <th>Satuan</th>
+                    <th>Tanggal Beli</th>
                     <th>Keterangan</th>
                     <th>Action</th>
                 </tr>

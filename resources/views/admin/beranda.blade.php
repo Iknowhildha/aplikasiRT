@@ -11,6 +11,7 @@ $date = date('Y-m-d');
 $query1 = mysqli_query($koneksi, "SELECT users.`id`,warga.`id`
 FROM users,warga
 WHERE users.`level`= 'Warga'
+AND warga.`status`= 'Confirmed'
 AND users.`id`= warga.`user_id`");
 $jumlah_warga = mysqli_num_rows($query1);
 $query2 = mysqli_query($koneksi, "SELECT * FROM surat_pengantar WHERE tanggal='$date'");
